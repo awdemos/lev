@@ -22,9 +22,14 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         payload = json.loads(Path(args.questions).read_text())
+        questions = payload["questions"]
+        if not isinstance(questions, list) or not all(
+            isinstance(q, dict) for q in questions
+        ):
+            raise ValueError("'questions' must be a list of objects")
         results = [
             classify(args.state, question_from_dict(q), args.threshold, args.max_iters)
-            for q in payload["questions"]
+            for q in questions
         ]
     except (ValueError, KeyError, OSError) as exc:
         print(f"lev: error: {exc}", file=sys.stderr)

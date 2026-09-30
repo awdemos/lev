@@ -2,18 +2,22 @@ import math
 import re
 from collections import Counter
 
-TOKEN_RE = re.compile(r"[a-z0-9]+")
+TOKEN_RE = re.compile(r"[a-z0-9]{2,}")
 STOPWORDS = frozenset({"a", "an", "the", "of", "to", "in", "for", "and", "or", "is", "it", "we", "were"})
 
 
 def _stem(tok: str) -> str:
-    if len(tok) > 4 and tok.endswith("ies"):
-        return tok[:-3] + "y"
-    if len(tok) > 3 and tok.endswith("s"):
-        return tok[:-1]
-    if len(tok) > 4 and tok.endswith("ed"):
-        return tok[:-2]
-    return tok
+    if tok.endswith(("ss", "us", "is")):
+        return tok
+    if len(tok) > 4 and tok.endswith("ies") and not tok.endswith("eries"):
+        stem = tok[:-3] + "y"
+    elif len(tok) > 3 and tok.endswith("s") and not tok.endswith("ies"):
+        stem = tok[:-1]
+    elif len(tok) > 4 and tok.endswith("ed"):
+        stem = tok[:-2]
+    else:
+        return tok
+    return stem if len(stem) >= 3 else tok
 
 
 def tokenize(text: str) -> Counter:

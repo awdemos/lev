@@ -15,7 +15,7 @@ _POSITIVE = tokenize(
 )
 _NEGATIVE = tokenize(
     "later maybe eventually casual minor cosmetic nice fine okay tolerable "
-    "someday whenever slow mild slight meh bad poor useless broken"
+    "someday whenever slow mild slight meh bad poor useless"
 )
 
 
@@ -25,6 +25,10 @@ def classify(
     threshold: float = 0.9,
     max_iters: int = 5,
 ) -> ChoiceResult | ScoreResult:
+    if not 0 <= threshold <= 1:
+        raise ValueError("threshold must be between 0 and 1")
+    if max_iters < 1:
+        raise ValueError("max_iters must be >= 1")
     if isinstance(question, ChoiceQuestion):
         return _classify_choice(state, question, threshold, max_iters)
     return _classify_score(state, question, threshold, max_iters)
@@ -36,6 +40,8 @@ def _classify_choice(
     threshold: float,
     max_iters: int,
 ) -> ChoiceResult:
+    if not question.labels:
+        raise ValueError("labels must be non-empty")
     tokens = tokenize(state)
     raw = raw_choice_scores(tokens, question.labels)
     prior: dict[str, float] | None = None
@@ -71,9 +77,10 @@ def _classify_score(
         score = round(50 + 50 * (pos - neg) / total)
         conf = abs(pos - neg) / total
     iterations = 1
-    # The lexical score is a fixed point; loop only to honor the contract.
-    while conf < threshold and iterations < max_iters and total > 0:
-        conf = min(1.0, conf + 0.25)
+    # The lexical score is a fixed point: the loop only counts how many
+    # iterations an unconfirmable score spends failing to reach the
+    # threshold; confidence is never inflated.
+    while conf < threshold and iterations < max_iters:
         iterations += 1
     return ScoreResult(
         score=score,
