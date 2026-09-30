@@ -1,0 +1,39 @@
+{
+  "batch": "authorization_consistency",
+  "batch_index": 12,
+  "assessments": {
+    "authorization_consistency": 100.0
+  },
+  "dimension_notes": {
+    "authorization_consistency": {
+      "evidence": [
+        "lev/ is a pure text-classification library (6 production files, 282 LOC): cli.py exposes a single argparse 'classify' subcommand, engine.py/loop.py/router.py are pure functions, types.py holds frozen dataclasses.",
+        "No routes, HTTP handlers, decorators, middleware, ORM models, RLS policies, permission strings, user/session objects, or service-role/admin code exist anywhere in production code.",
+        "Grep for auth|login|permission|token|secret|admin|user across lev/ hits only tokenize()/token terminology in engine.py and loop.py, plus the sentiment word lists in loop.py (e.g. 'we', 'were') — no authorization surface.",
+        "The only I/O boundary is cli.py reading a local questions JSON file and validating it explicitly (isinstance checks raising ValueError), with errors reported to stderr and exit code 1."
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high"
+    }
+  },
+  "dimension_judgment": {
+    "authorization_consistency": {
+      "dimension_character": "This codebase has no authorization surface at all: it is a local CLI plus pure-function library for classifying text states, with no routes, no users, no roles, and no permission checks. Every input enters through one validated CLI boundary in cli.py. The dimension's concerns (decorator coverage gaps, RLS, magic permission strings, admin bypasses) simply do not apply.",
+      "score_rationale": "With zero protected resources and a single, uniformly validated input boundary, auth patterns are trivially consistent — there is nothing to apply them to. Matching the global anchor for exemplary (100): a developer can trust that no hidden auth concerns exist here. Zero findings is the correct outcome rather than a manufactured one."
+    }
+  },
+  "issues": [],
+  "context_updates": {
+    "authorization_consistency": {
+      "add": [
+        {
+          "header": "No authorization surface exists in lev",
+          "description": "lev is a pure-function text-classification library with one argparse CLI boundary; there are no routes, users, roles, or permissions anywhere, so authorization consistency holds vacuously and no auth checks are warranted.",
+          "settled": true,
+          "positive": true
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "batch": "cross_module_architecture",
+  "batch_index": 1,
+  "assessments": {
+    "cross_module_architecture": 92.0
+  },
+  "dimension_notes": {
+    "cross_module_architecture": {
+      "evidence": [
+        "Dependency direction is strictly layered and acyclic: lev/types.py (leaf dataclasses) <- lev/engine.py (pure functions) <- lev/loop.py (orchestration) <- lev/cli.py (entry point); lev/router.py depends only on types.py.",
+        "lev/__init__.py is a small intentional facade re-exporting the 6-symbol public API with __all__ — clear API purpose, no boundary harm.",
+        "No shared mutable state across modules: all data flows through frozen dataclasses (types.py) and explicit parameters; no import-time side effects beyond pure constant computation.",
+        "Minor: the positive/negative sentiment lexicons (_POSITIVE/_NEGITIVE tokenize calls) live in lev/loop.py, the orchestration module, rather than in lev/engine.py with the other lexical machinery — domain data slightly blurred into the loop layer.",
+        "lev/loop.py imports collections.Counter but never uses it — dead import crossing the module boundary (also flagged mechanically)."
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "Only residual nits: sentiment lexicon placement in loop.py blurs the engine/loop boundary slightly, and an unused Counter import in loop.py crosses module boundaries for no reason. Neither affects change blast radius."
+    }
+  },
+  "dimension_judgment": {
+    "cross_module_architecture": {
+      "dimension_character": "This is a small, strictly layered package with a textbook dependency direction (types -> engine -> loop -> cli, router as a types-only leaf) and no cycles, hubs, or shared mutable state. The only __init__.py is a deliberate, minimal public facade. The single boundary blemish is lexical domain data (_POSITIVE/_NEGATIVE) living in the orchestration module rather than the engine module that owns tokenization and scoring.",
+      "score_rationale": "Measured against the anchors, this sits in the 'strong' band: a developer can trust dependency direction completely and any change ripples only one layer up. It is not exemplary because the lexicon placement slightly violates the module ownership pattern the rest of the codebase demonstrates cleanly, and there is a dead cross-module import — isolated, low-friction rough edges rather than structural debt."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "cross_module_architecture",
+      "identifier": "lexicon-data-in-loop-module",
+      "summary": "Sentiment lexicons (_POSITIVE/_NEGATIVE) live in orchestration module loop.py instead of engine.py",
+      "related_files": ["lev/loop.py", "lev/engine.py"],
+      "evidence": [
+        "lev/loop.py:15-24 defines _POSITIVE/_NEGATIVE via tokenize(), while all other lexical machinery (tokenize, _stem, STOPWORDS, _RULES) lives in lev/engine.py; loop.py is the deliberation orchestration layer."
+      ],
+      "suggestion": "Move the two lexicon constants into lev/engine.py (e.g. as sentiment_lexicons() or module constants) and import them in loop.py, keeping all tokenization/scoring domain data in one module.",
+      "confidence": "low",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "cross_module_architecture",
+      "identifier": "unused-counter-import-loop",
+      "summary": "lev/loop.py imports collections.Counter but never uses it",
+      "related_files": ["lev/loop.py"],
+      "evidence": [
+        "lev/loop.py:2 'from collections import Counter' — Counter appears nowhere else in the file; tokenize() in engine.py is what produces Counters."
+      ],
+      "suggestion": "Delete the unused import line.",
+      "confidence": "high",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": ["unused-counter-import-loop"],
+    "possible_false_positives": [
+      "facade_modules flag on lev/loop.py and lev/cli.py — high re-export ratio is an artifact of small modules importing shared types; both files use every import locally, they are not facades."
+    ]
+  },
+  "context_updates": {
+    "cross_module_architecture": {
+      "add": [
+        {
+          "header": "Strict layered dependency direction",
+          "description": "The package is a clean acyclic stack: types (leaf dataclasses) <- engine (pure lexical/scoring functions) <- loop (deliberation orchestration) <- cli (entry point), with router as a types-only leaf. No cycles, hubs, or shared mutable state exist, so change blast radius is always one layer.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "Minimal intentional public facade in __init__.py",
+          "description": "lev/__init__.py re-exports exactly the 6-symbol public API with __all__ and nothing else — a deliberate stability boundary, not an accidental barrel.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "Sentiment lexicons owned by loop module",
+          "description": "_POSITIVE/_NEGATIVE live in lev/loop.py (orchestration) rather than lev/engine.py (lexical domain), a minor ownership inconsistency in an otherwise strict layering.",
+          "settled": false,
+          "positive": false
+        }
+      ]
+    }
+  }
+}

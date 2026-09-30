@@ -1,0 +1,97 @@
+{
+  "batch": "api_surface_coherence",
+  "batch_index": 11,
+  "assessments": {
+    "api_surface_coherence": 88.0
+  },
+  "dimension_notes": {
+    "api_surface_coherence": {
+      "evidence": [
+        "Public API is tiny and uniform: classify(state, question, threshold, max_iters), question_from_dict(data), and four frozen dataclasses; all functions sync, no async/sync mixing anywhere in lev/.",
+        "Parameter ordering is consistent across modules (state/text first, config knobs last with defaults); no public function exceeds 4 parameters.",
+        "No docstrings or type-level documentation on the public entry points classify() and question_from_dict(); the ValueError failure modes (threshold range, max_iters, labels non-empty, unknown type) are only discoverable by reading the implementation.",
+        "classify() is an overloaded interface: it accepts a ChoiceQuestion | ScoreQuestion union and returns ChoiceResult | ScoreResult, silently dispatching via isinstance (lev/loop.py:33-35); behavior is only expressed in the annotation.",
+        "Anchor defaults 'worst case'/'best case' are duplicated as literals in both lev/types.py:13-14 and lev/router.py:16-17, so a future change to the dataclass default can silently diverge from the dict-parsing path."
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The public entry points carry no error contract (no docstrings describing the ValueError conditions), classify() overloads behavior on argument type with a union return, and the score-anchor defaults are duplicated between types.py and router.py, leaving small drift risks on an otherwise very coherent surface."
+    }
+  },
+  "dimension_judgment": {
+    "api_surface_coherence": {
+      "dimension_character": "This is a small, disciplined API surface: one classifier entry point, one factory, and four frozen dataclasses, all synchronous with consistent naming and parameter ordering. The main rough edges are semantic rather than structural — behavior is overloaded onto classify() via a union argument, and the failure contract (which ValueErrors, when) is undocumented, so a developer must read the implementation to know what can fail.",
+      "score_rationale": "Against the anchors, a developer seeing classify() and question_from_dict() can predict nearly every other API shape in the package, which sits between strong (90) and exemplary: the sync-only, low-parameter-count, consistently-ordered surface earns a high score, while the undocumented error contract, the isinstance-dispatched overload with a union return, and the duplicated anchor defaults pull it just below the 90 anchor."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "api_surface_coherence",
+      "identifier": "classify_missing_error_contract",
+      "summary": "Public classify() and question_from_dict() have no docstrings; ValueError failure modes are undocumented",
+      "related_files": ["lev/loop.py", "lev/router.py"],
+      "evidence": [
+        "lev/loop.py:29-32 raises ValueError for threshold/max_iters and lev/loop.py:45 raises for empty labels, but classify() has no docstring stating these preconditions",
+        "lev/router.py:9-19 raises three distinct ValueErrors in question_from_dict() with no documentation of the error contract"
+      ],
+      "suggestion": "Add one-line docstrings to classify() and question_from_dict() listing the raised ValueError conditions (threshold range, max_iters >= 1, non-empty labels, unknown type), so callers can rely on the contract without reading implementations.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "api_surface_coherence",
+      "identifier": "classify_overloaded_union_dispatch",
+      "summary": "classify() overloads two behaviors on question type and returns a union only explained by the annotation",
+      "related_files": ["lev/loop.py"],
+      "evidence": [
+        "lev/loop.py:33-35 silently dispatches ChoiceQuestion to _classify_choice and everything else (including a wrong type) to _classify_score via isinstance",
+        "lev/loop.py:28 declares -> ChoiceResult | ScoreResult with no doc tying the result type to the question type"
+      ],
+      "suggestion": "Either add a docstring mapping question type to result type, or reject non-ScoreQuestion input with ValueError in the fallback branch so the overload's contract is explicit instead of implicit.",
+      "confidence": "low",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "api_surface_coherence",
+      "identifier": "duplicated_anchor_defaults",
+      "summary": "ScoreQuestion anchor defaults are duplicated as string literals in types.py and router.py",
+      "related_files": ["lev/types.py", "lev/router.py"],
+      "evidence": [
+        "lev/types.py:13-14 sets low_anchor='worst case', high_anchor='best case' as dataclass defaults",
+        "lev/router.py:16-17 repeats str(data.get('low_anchor', 'worst case')) and 'best case' verbatim, so a change to the dataclass default would not propagate"
+      ],
+      "suggestion": "Reference the dataclass defaults in router.py (e.g. build the object first and fill missing keys from a ScoreQuestion() instance, or define module-level constants in types.py and use them in both places) so the dict-parsing path and the type agree by construction.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [
+      "Very small public surface means each missing docstring or duplicated default has outsized relative impact on API predictability"
+    ],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  },
+  "context_updates": {
+    "api_surface_coherence": {
+      "add": [
+        {
+          "header": "Tiny uniform sync-only public surface",
+          "description": "The entire public API is classify(), question_from_dict(), and four frozen dataclasses; everything is synchronous with consistent state-first parameter ordering and no function exceeding 4 parameters, so one example predicts every other API shape.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "classify() overloads via union dispatch",
+          "description": "classify() accepts ChoiceQuestion | ScoreQuestion and returns the matching result type via isinstance dispatch (lev/loop.py:33-35); the overload is real but only expressed in type annotations, not documentation.",
+          "settled": true,
+          "positive": false
+        }
+      ]
+    }
+  }
+}

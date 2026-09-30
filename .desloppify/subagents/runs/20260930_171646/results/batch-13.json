@@ -1,0 +1,54 @@
+{
+  "batch": "ai_generated_debt",
+  "batch_index": 13,
+  "assessments": {
+    "ai_generated_debt": 96.0
+  },
+  "dimension_notes": {
+    "ai_generated_debt": {
+      "evidence": [
+        "lev/engine.py: comment ratio across the package is ~0.008; the only substantial comment (lev/loop.py:81-83) explains WHY the score loop is a fixed-point simulation, which is non-obvious and earns its place",
+        "No entry/exit debug logging, no console object dumps anywhere; cli.py prints only the final results",
+        "No defensive overengineering: no null checks on typed values, no try/except around pure expressions; engine.py has zero try blocks and cli.py's try/except at lev/cli.py:23-38 is a genuine file-I/O/parse boundary",
+        "No docstring bloat: the codebase has no docstrings at all; functions like softmax and confidence (lev/engine.py:51-59) are self-explanatory and need none",
+        "No pass-through wrappers: tokenize, confidence, and raw_choice_scores all contain real logic (stemming, softmax normalization, evidence counting), not argument forwarding",
+        "Names are domain-specific (classify, question_from_dict, raw_choice_scores, blend); no handleData/processItem-style generics"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "Nothing observed preventing a near-perfect score; the only residual noise is the unused `Counter` import in lev/loop.py (reported under its proper dimension, not AI-debt) and the deliberately simulation-look loop in _classify_score whose long explanatory comment hints the construct itself may be over-clever."
+    }
+  },
+  "dimension_judgment": {
+    "ai_generated_debt": {
+      "dimension_character": "This is a purpose-driven, ceremony-free codebase: 282 LOC of direct logic with essentially no comments, no logging noise, no defensive sprawl, and no boilerplate error handling. The single non-trivial comment in loop.py explains a genuinely non-obvious fixed-point simulation, which is exactly what comments should do.",
+      "score_rationale": "Against the ai_generated_debt anchors (100 = purpose-driven with no ceremony; 90 = mostly clean with small pockets of boilerplate), this code sits at the exemplary end: there is no restating commentary, no nosy logging, no copied boilerplate, and the one import-then-unused-list pattern is absent. The score is held marginally below 100 by the awkward _classify_score while-loop (lev/loop.py:80-85), whose no-op iteration counting needs a three-line comment to justify — a faint over-clever smell — and the unused Counter import in loop.py."
+    }
+  },
+  "issues": [],
+  "context_updates": {
+    "ai_generated_debt": {
+      "add": [
+        {
+          "header": "Comment-free, purpose-driven style",
+          "description": "The package carries an ~0.008 comment ratio with zero docstrings, and the code reads cleanly without them because names are domain-specific and functions are short. Comments are reserved for non-obvious WHY, as in the fixed-point explanation at lev/loop.py:81-83.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "No boilerplate error handling",
+          "description": "Error handling is throw-based at real boundaries (cli.py wraps file read/JSON parse; router.py validates untyped dict input) with no copied try/except templates across files. Defensive checks appear only where input is genuinely untrusted.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "Small helpers contain real logic",
+          "description": "tokenize, softmax, confidence, and raw_choice_scores in engine.py each do substantive work (stemming, normalization, evidence scoring); none are LLM-style argument-forwarding wrappers, so the codebase has no wrapper noise to filter.",
+          "settled": true,
+          "positive": true
+        }
+      ]
+    }
+  }
+}

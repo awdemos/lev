@@ -1,0 +1,81 @@
+{
+  "batch": "mid_level_elegance",
+  "batch_index": 9,
+  "assessments": {
+    "mid_level_elegance": 90.0
+  },
+  "dimension_notes": {
+    "mid_level_elegance": {
+      "evidence": [
+        "Layering is clean and directional: lev/engine.py exposes pure functions (tokenize, softmax, raw_choice_scores, blend), lev/loop.py orchestrates them, lev/cli.py only wires argv to classify() — composition of collaborators, no back-and-forth calls.",
+        "Dict-to-domain translation happens in exactly one obvious place: question_from_dict in lev/router.py:4-19 is the sole boundary translator from untyped JSON to frozen dataclasses.",
+        "Handoffs are explicit and typed: all cross-module contracts flow through frozen dataclasses in lev/types.py (ChoiceQuestion/ScoreQuestion/ChoiceResult/ScoreResult), so inputs/outputs across boundaries are minimal and unsurprising.",
+        "Error propagation across the seam is predictable: router and loop raise ValueError for bad input; cli.py:36-38 catches (ValueError, KeyError, OSError) once at the top and converts to exit code 1 — a single, obvious lifecycle boundary.",
+        "Minor friction: lev/cli.py:41 serializes results via result.__dict__, an implicit contract on dataclass internals rather than an explicit serialization point.",
+        "Minor noise: lev/loop.py:2 imports Counter but never uses it — dead weight at an otherwise clean engine→loop seam."
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "cli.py:41 relies on result.__dict__ for JSON output, an implicit serialization contract that breaks if result types gain non-serializable fields; and loop.py:2 carries an unused Counter import at the engine/loop boundary."
+    }
+  },
+  "dimension_judgment": {
+    "mid_level_elegance": {
+      "dimension_character": "This tiny codebase has textbook seams: a pure-function engine, a single orchestration loop layer, one boundary translator (question_from_dict), and shared frozen-dataclass contracts, with errors raised deep and handled once at the CLI edge. A new team member can trace any handoff in one hop. The only rough edges are cosmetic: an unused import at the loop seam and result serialization via __dict__ instead of an explicit asdict.",
+      "score_rationale": "Against the global anchors this sits between 90 (strong, minor friction) and 100 (exemplary): boundaries are explicit, minimal, and unsurprising with translation in one obvious place, but the __dict__ serialization in cli.py and the unused Counter import in loop.py are small, real frictions at otherwise clean seams. Nothing here is recurring glue-code entropy, so the score stays near the top of the scale rather than drifting toward 80."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "mid_level_elegance",
+      "identifier": "cli_result_serialization_via_dict",
+      "summary": "CLI serializes results via result.__dict__, an implicit boundary contract on dataclass internals",
+      "related_files": ["lev/cli.py"],
+      "evidence": [
+        "cli.py:41 does print(json.dumps(result.__dict__, indent=2)) — output shape is derived from dataclass field layout rather than an explicit serialization point, so adding a non-JSON-serializable field (e.g. a Counter or tuple) to ChoiceResult/ScoreResult silently breaks the CLI seam."
+      ],
+      "suggestion": "Use dataclasses.asdict(result) in cli.py:41 to make the serialization point explicit, or add a to_dict() on the result types; single-line change.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "mid_level_elegance",
+      "identifier": "loop_unused_counter_import",
+      "summary": "Unused Counter import at the engine→loop module seam",
+      "related_files": ["lev/loop.py"],
+      "evidence": [
+        "loop.py:2 imports Counter from collections but never references it — dead import noise on a module whose only job is orchestrating engine functions."
+      ],
+      "suggestion": "Delete the unused 'from collections import Counter' line in loop.py:2.",
+      "confidence": "high",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "context_updates": {
+    "mid_level_elegance": {
+      "add": [
+        {
+          "header": "Single boundary translator in router.py",
+          "description": "All untyped-JSON-to-domain translation lives in question_from_dict (router.py), the one obvious place dict input crosses into typed Question objects; loop.py and cli.py never touch raw dicts.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "Layered engine/loop/cli handoff chain",
+          "description": "engine.py is pure functions, loop.py orchestrates them into classify(), cli.py only wires argv and catches errors once at the edge — handoffs are one-directional with no back-and-forth calls.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "Frozen dataclasses as the shared seam contract",
+          "description": "All cross-module inputs/outputs flow through the frozen dataclasses in types.py, making boundary shapes explicit and minimal; there is no glue-code or ad-hoc mapper layer.",
+          "settled": true,
+          "positive": true
+        }
+      ]
+    }
+  }
+}

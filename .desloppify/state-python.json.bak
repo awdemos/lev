@@ -1823,5 +1823,9 @@
         }
       }
     }
+  },
+  "reminder_history": {
+    "zone_classification": 1,
+    "report_scores": 1
   }
 }

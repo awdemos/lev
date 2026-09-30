@@ -1,19 +1,19 @@
 {
   "version": 3,
   "created": "2026-09-30T17:15:00+00:00",
-  "last_scan": "2026-09-30T17:15:13+00:00",
-  "scan_count": 1,
-  "overall_score": 24.6,
+  "last_scan": "2026-09-30T17:22:13+00:00",
+  "scan_count": 2,
+  "overall_score": 92.8,
   "objective_score": 98.4,
-  "strict_score": 24.6,
+  "strict_score": 92.8,
   "verified_strict_score": 98.4,
   "stats": {
-    "total": 24,
+    "total": 48,
     "auto_resolved": 0,
     "deferred": 0,
     "false_positive": 0,
-    "fixed": 0,
-    "open": 24,
+    "fixed": 20,
+    "open": 28,
     "triaged_out": 0,
     "wontfix": 0,
     "by_tier": {
@@ -22,7 +22,16 @@
         "deferred": 0,
         "false_positive": 0,
         "fixed": 0,
-        "open": 2,
+        "open": 8,
+        "triaged_out": 0,
+        "wontfix": 0
+      },
+      "2": {
+        "auto_resolved": 0,
+        "deferred": 0,
+        "false_positive": 0,
+        "fixed": 0,
+        "open": 11,
         "triaged_out": 0,
         "wontfix": 0
       },
@@ -31,7 +40,7 @@
         "deferred": 0,
         "false_positive": 0,
         "fixed": 0,
-        "open": 2,
+        "open": 9,
         "triaged_out": 0,
         "wontfix": 0
       },
@@ -39,8 +48,8 @@
         "auto_resolved": 0,
         "deferred": 0,
         "false_positive": 0,
-        "fixed": 0,
-        "open": 20,
+        "fixed": 20,
+        "open": 0,
         "triaged_out": 0,
         "wontfix": 0
       }
@@ -169,11 +178,11 @@
         "reason": "unassessed",
         "dimension": "abstraction_fitness"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -182,7 +191,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::ai_generated_debt": {
       "id": "subjective_review::.::ai_generated_debt",
@@ -195,11 +210,11 @@
         "reason": "unassessed",
         "dimension": "ai_generated_debt"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -208,7 +223,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::api_surface_coherence": {
       "id": "subjective_review::.::api_surface_coherence",
@@ -221,11 +242,11 @@
         "reason": "unassessed",
         "dimension": "api_surface_coherence"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -234,7 +255,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::authorization_consistency": {
       "id": "subjective_review::.::authorization_consistency",
@@ -247,11 +274,11 @@
         "reason": "unassessed",
         "dimension": "authorization_consistency"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -260,7 +287,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::contract_coherence": {
       "id": "subjective_review::.::contract_coherence",
@@ -273,11 +306,11 @@
         "reason": "unassessed",
         "dimension": "contract_coherence"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -286,7 +319,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::convention_outlier": {
       "id": "subjective_review::.::convention_outlier",
@@ -299,11 +338,11 @@
         "reason": "unassessed",
         "dimension": "convention_outlier"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -312,7 +351,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::cross_module_architecture": {
       "id": "subjective_review::.::cross_module_architecture",
@@ -325,11 +370,11 @@
         "reason": "unassessed",
         "dimension": "cross_module_architecture"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -338,7 +383,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::dependency_health": {
       "id": "subjective_review::.::dependency_health",
@@ -351,11 +402,11 @@
         "reason": "unassessed",
         "dimension": "dependency_health"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -364,7 +415,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::design_coherence": {
       "id": "subjective_review::.::design_coherence",
@@ -377,11 +434,11 @@
         "reason": "unassessed",
         "dimension": "design_coherence"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -390,7 +447,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::error_consistency": {
       "id": "subjective_review::.::error_consistency",
@@ -403,11 +466,11 @@
         "reason": "unassessed",
         "dimension": "error_consistency"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -416,7 +479,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::high_level_elegance": {
       "id": "subjective_review::.::high_level_elegance",
@@ -429,11 +498,11 @@
         "reason": "unassessed",
         "dimension": "high_level_elegance"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -442,7 +511,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::incomplete_migration": {
       "id": "subjective_review::.::incomplete_migration",
@@ -455,11 +530,11 @@
         "reason": "unassessed",
         "dimension": "incomplete_migration"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -468,7 +543,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::initialization_coupling": {
       "id": "subjective_review::.::initialization_coupling",
@@ -481,11 +562,11 @@
         "reason": "unassessed",
         "dimension": "initialization_coupling"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -494,7 +575,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::logic_clarity": {
       "id": "subjective_review::.::logic_clarity",
@@ -507,11 +594,11 @@
         "reason": "unassessed",
         "dimension": "logic_clarity"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -520,7 +607,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::low_level_elegance": {
       "id": "subjective_review::.::low_level_elegance",
@@ -533,11 +626,11 @@
         "reason": "unassessed",
         "dimension": "low_level_elegance"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -546,7 +639,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::mid_level_elegance": {
       "id": "subjective_review::.::mid_level_elegance",
@@ -559,11 +658,11 @@
         "reason": "unassessed",
         "dimension": "mid_level_elegance"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -572,7 +671,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::naming_quality": {
       "id": "subjective_review::.::naming_quality",
@@ -585,11 +690,11 @@
         "reason": "unassessed",
         "dimension": "naming_quality"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -598,7 +703,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::package_organization": {
       "id": "subjective_review::.::package_organization",
@@ -611,11 +722,11 @@
         "reason": "unassessed",
         "dimension": "package_organization"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -624,7 +735,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::test_strategy": {
       "id": "subjective_review::.::test_strategy",
@@ -637,11 +754,11 @@
         "reason": "unassessed",
         "dimension": "test_strategy"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
@@ -650,7 +767,13 @@
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::.::type_safety": {
       "id": "subjective_review::.::type_safety",
@@ -663,17 +786,856 @@
         "reason": "unassessed",
         "dimension": "type_safety"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "completed by review import",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:22:13+00:00",
       "reopen_count": 0,
       "work_item_kind": "assessment_request",
       "issue_kind": "assessment_request",
       "origin": "synthetic_task",
       "lang": "python",
       "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Dimension assessment imported; coverage marker superseded",
+        "attested_at": "2026-09-30T17:22:13+00:00",
+        "scan_verified": false
+      }
+    },
+    "review::.::holistic::cross_module_architecture::lexicon-data-in-loop-module": {
+      "id": "review::.::holistic::cross_module_architecture::lexicon-data-in-loop-module",
+      "detector": "review",
+      "file": ".",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "Sentiment lexicons (_POSITIVE/_NEGATIVE) live in orchestration module loop.py instead of engine.py",
+      "detail": {
+        "holistic": true,
+        "dimension": "cross_module_architecture",
+        "related_files": [
+          "lev/loop.py",
+          "lev/engine.py"
+        ],
+        "evidence": [
+          "lev/loop.py:15-24 defines _POSITIVE/_NEGATIVE via tokenize(), while all other lexical machinery (tokenize, _stem, STOPWORDS, _RULES) lives in lev/engine.py; loop.py is the deliberation orchestration layer."
+        ],
+        "suggestion": "Move the two lexicon constants into lev/engine.py (e.g. as sentiment_lexicons() or module constants) and import them in loop.py, keeping all tokenization/scoring domain data in one module.",
+        "reasoning": "",
+        "summary_hash": "9805e7c7"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::cross_module_architecture::unused-counter-import-loop": {
+      "id": "review::.::holistic::cross_module_architecture::unused-counter-import-loop",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "lev/loop.py imports collections.Counter but never uses it",
+      "detail": {
+        "holistic": true,
+        "dimension": "cross_module_architecture",
+        "related_files": [
+          "lev/loop.py"
+        ],
+        "evidence": [
+          "lev/loop.py:2 'from collections import Counter' \u2014 Counter appears nowhere else in the file; tokenize() in engine.py is what produces Counters."
+        ],
+        "suggestion": "Delete the unused import line.",
+        "reasoning": "",
+        "summary_hash": "19b065eb"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::high_level_elegance::score_lexical_scoring_in_loop_module": {
+      "id": "review::.::holistic::high_level_elegance::score_lexical_scoring_in_loop_module",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Score-question lexicons and scoring math live in loop.py while choice scoring lives in engine.py, splitting scoring ownership across modules",
+      "detail": {
+        "holistic": true,
+        "dimension": "high_level_elegance",
+        "related_files": [
+          "lev/loop.py",
+          "lev/engine.py"
+        ],
+        "evidence": [
+          "lev/loop.py:12-20 defines _POSITIVE/_NEGATIVE lexicons and lev/loop.py:65-79 computes the urgency score inline, while the choice-question equivalent (raw_choice_scores) is a primitive in lev/engine.py:62-69",
+          "engine.py's stated role per its contents is scoring primitives (tokenize, softmax, confidence, raw_choice_scores, blend), but score questions bypass it entirely"
+        ],
+        "suggestion": "Move _POSITIVE, _NEGATIVE, and the score computation (lev/loop.py:71-79) into lev/engine.py as a raw_score_scores(tokens) primitive, leaving loop.py as pure iteration orchestration; loop.py then imports it alongside raw_choice_scores.",
+        "reasoning": "",
+        "summary_hash": "1bd64730"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::convention_outlier::router_untyped_dict_param": {
+      "id": "review::.::holistic::convention_outlier::router_untyped_dict_param",
+      "detector": "review",
+      "file": ".",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "question_from_dict takes bare `data: dict` in a codebase where every other public function is precisely annotated",
+      "detail": {
+        "holistic": true,
+        "dimension": "convention_outlier",
+        "related_files": [
+          "lev/router.py"
+        ],
+        "evidence": [
+          "lev/router.py:4 `def question_from_dict(data: dict) -> ChoiceQuestion | ScoreQuestion:` \u2014 every other public API (engine.softmax dict[str, float], loop.classify ChoiceQuestion | ScoreQuestion) carries precise generic annotations, making this the one untyped-island signature."
+        ],
+        "suggestion": "Annotate as `data: dict[str, object]` (or a small TypedDict/union if input shape is worth pinning) to match the annotation discipline of the rest of the package; a single-line signature change.",
+        "reasoning": "",
+        "summary_hash": "4255acd0"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::error_consistency::cli-keyerror-message": {
+      "id": "review::.::holistic::error_consistency::cli-keyerror-message",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Missing 'questions' key surfaces as bare key repr with no structural context",
+      "detail": {
+        "holistic": true,
+        "dimension": "error_consistency",
+        "related_files": [
+          "lev/cli.py"
+        ],
+        "evidence": [
+          "In cli.py, `questions = payload[\"questions\"]` can raise KeyError, and the except (ValueError, KeyError, OSError) handler prints f\"lev: error: {exc}\" - producing 'lev: error: \\'questions\\'' with no indication the key was expected in the questions file"
+        ],
+        "suggestion": "Use payload.get(\"questions\") and raise ValueError(\"questions file must contain a 'questions' list\") when missing, so all failures flow through the descriptive ValueError path and the KeyError branch can be dropped.",
+        "reasoning": "",
+        "summary_hash": "2df78130"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::error_consistency::cli-read-no-encoding": {
+      "id": "review::.::holistic::error_consistency::cli-read-no-encoding",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Questions file read lacks explicit encoding",
+      "detail": {
+        "holistic": true,
+        "dimension": "error_consistency",
+        "related_files": [
+          "lev/cli.py"
+        ],
+        "evidence": [
+          "cli.py line 24: Path(args.questions).read_text() with no encoding argument - a non-UTF8 file raises UnicodeDecodeError, which is not in the caught tuple (only ValueError, KeyError, OSError) so it surfaces as a raw traceback instead of a clean CLI error"
+        ],
+        "suggestion": "Pass encoding=\"utf-8\" to read_text() and include UnicodeDecodeError (or UnicodeError) in the except tuple so bad-encodings get the same clean 'lev: error:' treatment.",
+        "reasoning": "",
+        "summary_hash": "28030513"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::naming_quality::state_param_generic_name": {
+      "id": "review::.::holistic::naming_quality::state_param_generic_name",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "classify() parameter named 'state' is generic for what is actually the input text to classify",
+      "detail": {
+        "holistic": true,
+        "dimension": "naming_quality",
+        "related_files": [
+          "lev/loop.py",
+          "lev/cli.py"
+        ],
+        "evidence": [
+          "lev/loop.py classify(state: str, ...) \u2014 'state' suggests mutable runtime state, but it is the free text being classified",
+          "lev/cli.py exposes it as positional 'state' with help text 'the text to classify', confirming the mismatch"
+        ],
+        "suggestion": "Rename the parameter to 'text' in classify(), _classify_choice(), _classify_score() and the argparse positional in cli.py; no other call sites exist.",
+        "reasoning": "",
+        "summary_hash": "9246ddf0"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::abstraction_fitness::confidence_thin_wrapper": {
+      "id": "review::.::holistic::abstraction_fitness::confidence_thin_wrapper",
+      "detector": "review",
+      "file": ".",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "engine.confidence() is a pass-through one-liner wrapping max(dist.values()) with no policy or translation",
+      "detail": {
+        "holistic": true,
+        "dimension": "abstraction_fitness",
+        "related_files": [
+          "lev/engine.py",
+          "lev/loop.py"
+        ],
+        "evidence": [
+          "lev/engine.py: confidence() body is exactly `return max(dist.values())` with no validation, scaling, or other logic",
+          "The name adds domain vocabulary over max(), but at 3 trivial call sites (all in loop.py) the indirection does not pay for itself"
+        ],
+        "suggestion": "Either inline max(dist.values()) at the loop.py call sites, or keep confidence() only if the project intends to evolve it (e.g. margin-based confidence); if kept, add a brief docstring stating it is the deliberate confidence contract so future readers do not treat it as dead indirection.",
+        "reasoning": "",
+        "summary_hash": "df62e89b"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::dependency_health::unused_counter_import_loop": {
+      "id": "review::.::holistic::dependency_health::unused_counter_import_loop",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "Unused `from collections import Counter` import in lev/loop.py",
+      "detail": {
+        "holistic": true,
+        "dimension": "dependency_health",
+        "related_files": [
+          "lev/loop.py"
+        ],
+        "evidence": [
+          "lev/loop.py:2 `from collections import Counter` \u2014 Counter is never referenced anywhere in loop.py; the only Counter usage is in lev/engine.py (tokenize returns Counter, raw_choice_scores takes Counter)"
+        ],
+        "suggestion": "Delete line 2 (`from collections import Counter`) from lev/loop.py; no other change needed.",
+        "reasoning": "",
+        "summary_hash": "45850dfa"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::low_level_elegance::busy_loop_iteration_counting": {
+      "id": "review::.::holistic::low_level_elegance::busy_loop_iteration_counting",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "_classify_score uses a while loop that only increments a counter instead of computing iterations directly",
+      "detail": {
+        "holistic": true,
+        "dimension": "low_level_elegance",
+        "related_files": [
+          "lev/loop.py"
+        ],
+        "evidence": [
+          "lev/loop.py:88-90: `while conf < threshold and iterations < max_iters: iterations += 1` mutates no state; the loop exists only to count how many iterations an unconfirmable score spends below threshold"
+        ],
+        "suggestion": "Replace the loop with a direct assignment: `iterations = 1 if conf >= threshold else max_iters` (keeping the existing explanatory comment), which states the intent without simulating a loop.",
+        "reasoning": "",
+        "summary_hash": "39d434bf"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::low_level_elegance::unexplained_magic_multiplier": {
+      "id": "review::.::holistic::low_level_elegance::unexplained_magic_multiplier",
+      "detector": "review",
+      "file": ".",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "raw_choice_scores multiplies evidence count by an unexplained literal 3.0 with a redundant float() cast",
+      "detail": {
+        "holistic": true,
+        "dimension": "low_level_elegance",
+        "related_files": [
+          "lev/engine.py"
+        ],
+        "evidence": [
+          "lev/engine.py:63-67: `scores[label] = 3.0 * float(sum(1 for tok in evidence if state[tok] > 0))` \u2014 the 3.0 has no name or comment, and float() around sum() of ints is redundant"
+        ],
+        "suggestion": "Introduce a module-level constant (e.g. `EVIDENCE_WEIGHT = 3.0`) with a short comment, and drop the float() cast since the constant already makes the result float.",
+        "reasoning": "",
+        "summary_hash": "f7e94ada"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::low_level_elegance::unused_counter_import_loop": {
+      "id": "review::.::holistic::low_level_elegance::unused_counter_import_loop",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "lev/loop.py imports collections.Counter but never references it",
+      "detail": {
+        "holistic": true,
+        "dimension": "low_level_elegance",
+        "related_files": [
+          "lev/loop.py"
+        ],
+        "evidence": [
+          "lev/loop.py:2: `from collections import Counter` \u2014 Counter appears nowhere else in the file (tokenize returns Counter but is imported from lev.engine)"
+        ],
+        "suggestion": "Remove the unused `from collections import Counter` import line.",
+        "reasoning": "",
+        "summary_hash": "0816f404"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::mid_level_elegance::cli_result_serialization_via_dict": {
+      "id": "review::.::holistic::mid_level_elegance::cli_result_serialization_via_dict",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "CLI serializes results via result.__dict__, an implicit boundary contract on dataclass internals",
+      "detail": {
+        "holistic": true,
+        "dimension": "mid_level_elegance",
+        "related_files": [
+          "lev/cli.py"
+        ],
+        "evidence": [
+          "cli.py:41 does print(json.dumps(result.__dict__, indent=2)) \u2014 output shape is derived from dataclass field layout rather than an explicit serialization point, so adding a non-JSON-serializable field (e.g. a Counter or tuple) to ChoiceResult/ScoreResult silently breaks the CLI seam."
+        ],
+        "suggestion": "Use dataclasses.asdict(result) in cli.py:41 to make the serialization point explicit, or add a to_dict() on the result types; single-line change.",
+        "reasoning": "",
+        "summary_hash": "7bd218f4"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::mid_level_elegance::loop_unused_counter_import": {
+      "id": "review::.::holistic::mid_level_elegance::loop_unused_counter_import",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "Unused Counter import at the engine\u2192loop module seam",
+      "detail": {
+        "holistic": true,
+        "dimension": "mid_level_elegance",
+        "related_files": [
+          "lev/loop.py"
+        ],
+        "evidence": [
+          "loop.py:2 imports Counter from collections but never references it \u2014 dead import noise on a module whose only job is orchestrating engine functions."
+        ],
+        "suggestion": "Delete the unused 'from collections import Counter' line in loop.py:2.",
+        "reasoning": "",
+        "summary_hash": "17188ce7"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::test_strategy::weak_iteration_loop_assertion": {
+      "id": "review::.::holistic::test_strategy::weak_iteration_loop_assertion",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "test_ambiguous_input_spends_more_iterations_or_budget passes even if the deliberation loop is removed",
+      "detail": {
+        "holistic": true,
+        "dimension": "test_strategy",
+        "related_files": [
+          "tests/test_loop.py"
+        ],
+        "evidence": [
+          "tests/test_loop.py:36 asserts only result.iterations >= 1, which is true for any classify() call regardless of loop behavior; the test name promises verification of iteration spending that the assertion does not perform."
+        ],
+        "suggestion": "Strengthen the assertion to match the intent, e.g. assert result.iterations > 1 or == max_iters for the ambiguous input with threshold=0.99, so a regression that short-circuits the loop fails this test.",
+        "reasoning": "",
+        "summary_hash": "bc51e32f"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::api_surface_coherence::classify_missing_error_contract": {
+      "id": "review::.::holistic::api_surface_coherence::classify_missing_error_contract",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Public classify() and question_from_dict() have no docstrings; ValueError failure modes are undocumented",
+      "detail": {
+        "holistic": true,
+        "dimension": "api_surface_coherence",
+        "related_files": [
+          "lev/loop.py",
+          "lev/router.py"
+        ],
+        "evidence": [
+          "lev/loop.py:29-32 raises ValueError for threshold/max_iters and lev/loop.py:45 raises for empty labels, but classify() has no docstring stating these preconditions",
+          "lev/router.py:9-19 raises three distinct ValueErrors in question_from_dict() with no documentation of the error contract"
+        ],
+        "suggestion": "Add one-line docstrings to classify() and question_from_dict() listing the raised ValueError conditions (threshold range, max_iters >= 1, non-empty labels, unknown type), so callers can rely on the contract without reading implementations.",
+        "reasoning": "",
+        "summary_hash": "c6e7552d"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::api_surface_coherence::classify_overloaded_union_dispatch": {
+      "id": "review::.::holistic::api_surface_coherence::classify_overloaded_union_dispatch",
+      "detector": "review",
+      "file": ".",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "classify() overloads two behaviors on question type and returns a union only explained by the annotation",
+      "detail": {
+        "holistic": true,
+        "dimension": "api_surface_coherence",
+        "related_files": [
+          "lev/loop.py"
+        ],
+        "evidence": [
+          "lev/loop.py:33-35 silently dispatches ChoiceQuestion to _classify_choice and everything else (including a wrong type) to _classify_score via isinstance",
+          "lev/loop.py:28 declares -> ChoiceResult | ScoreResult with no doc tying the result type to the question type"
+        ],
+        "suggestion": "Either add a docstring mapping question type to result type, or reject non-ScoreQuestion input with ValueError in the fallback branch so the overload's contract is explicit instead of implicit.",
+        "reasoning": "",
+        "summary_hash": "a0c07916"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::api_surface_coherence::duplicated_anchor_defaults": {
+      "id": "review::.::holistic::api_surface_coherence::duplicated_anchor_defaults",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "ScoreQuestion anchor defaults are duplicated as string literals in types.py and router.py",
+      "detail": {
+        "holistic": true,
+        "dimension": "api_surface_coherence",
+        "related_files": [
+          "lev/types.py",
+          "lev/router.py"
+        ],
+        "evidence": [
+          "lev/types.py:13-14 sets low_anchor='worst case', high_anchor='best case' as dataclass defaults",
+          "lev/router.py:16-17 repeats str(data.get('low_anchor', 'worst case')) and 'best case' verbatim, so a change to the dataclass default would not propagate"
+        ],
+        "suggestion": "Reference the dataclass defaults in router.py (e.g. build the object first and fill missing keys from a ScoreQuestion() instance, or define module-level constants in types.py and use them in both places) so the dict-parsing path and the type agree by construction.",
+        "reasoning": "",
+        "summary_hash": "b3eef179"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::package_organization::loop_py_facade_like_reexports": {
+      "id": "review::.::holistic::package_organization::loop_py_facade_like_reexports",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "loop.py re-exports ~10 symbols (Counter, engine helpers, all four types), blurring its orchestration role vs engine.py",
+      "detail": {
+        "holistic": true,
+        "dimension": "package_organization",
+        "related_files": [
+          "lev/loop.py"
+        ],
+        "evidence": [
+          "lev/loop.py imports math, collections.Counter, blend/confidence/raw_choice_scores/tokenize from lev.engine, and all four dataclasses from lev.types, then defines only classify() itself \u2014 a 91% re-export ratio per structure signals",
+          "lev/loop.py:2 imports Counter but never uses it (confirmed unused-import signal), a symptom of the file acting as an accidental re-export hub"
+        ],
+        "suggestion": "Staged reorg (single edit, no new folders needed at this size): (1) drop the unused 'from collections import Counter' line; (2) keep only the symbols loop.py actually references in its own code (math, engine helpers, ChoiceQuestion/ScoreQuestion/ChoiceResult/ScoreResult are all genuinely used, so imports stay) \u2014 the defect is the unused import and facade-like profile, not the imports themselves; (3) validate with 'uv run ruff check lev/loop.py' and 'uv run pytest tests/'. No directory moves are warranted: with 6 files, introducing subpackages would reduce navigability rather than improve it.",
+        "reasoning": "",
+        "summary_hash": "de6c7ff4"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::design_coherence::no-op-deliberation-loop-score": {
+      "id": "review::.::holistic::design_coherence::no-op-deliberation-loop-score",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "_classify_score uses a while loop whose body only increments a counter, mimicking the choice path's loop without doing iterative work",
+      "detail": {
+        "holistic": true,
+        "dimension": "design_coherence",
+        "related_files": [
+          "lev/loop.py"
+        ],
+        "evidence": [
+          "lev/loop.py:84-85: `while conf < threshold and iterations < max_iters: iterations += 1` \u2014 a three-line explanation comment is required because the structure falsely implies computation happens each iteration"
+        ],
+        "suggestion": "Replace the loop with direct arithmetic: `iterations = 1 if conf >= threshold else max_iters` (keeping the existing comment explaining why the score loop is degenerate).",
+        "reasoning": "",
+        "summary_hash": "3fe9fccc"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::design_coherence::unused-counter-import-loop": {
+      "id": "review::.::holistic::design_coherence::unused-counter-import-loop",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "lev/loop.py imports Counter but never uses it",
+      "detail": {
+        "holistic": true,
+        "dimension": "design_coherence",
+        "related_files": [
+          "lev/loop.py"
+        ],
+        "evidence": [
+          "lev/loop.py:2 `from collections import Counter` \u2014 Counter is only referenced in re-export telemetry; no use in the module body"
+        ],
+        "suggestion": "Delete the unused import from lev/loop.py:2.",
+        "reasoning": "",
+        "summary_hash": "b0298f8a"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::contract_coherence::raw_choice_scores_param_name_mismatch": {
+      "id": "review::.::holistic::contract_coherence::raw_choice_scores_param_name_mismatch",
+      "detector": "review",
+      "file": ".",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "raw_choice_scores names its first parameter 'state' but callers pass a token Counter, not the state string",
+      "detail": {
+        "holistic": true,
+        "dimension": "contract_coherence",
+        "related_files": [
+          "lev/engine.py",
+          "lev/loop.py"
+        ],
+        "evidence": [
+          "lev/engine.py:67 declares def raw_choice_scores(state: Counter, labels: dict[str, str]) but the only caller, lev/loop.py _classify_choice, passes tokens = tokenize(state), i.e. a Counter produced from the state text",
+          "The name 'state' suggests the raw text accepted by classify/tokenize, so a reader calling this helper directly would reasonably pass a string and get a TypeError"
+        ],
+        "suggestion": "Rename the parameter from 'state' to 'tokens' in lev/engine.py:67 (and update the body reference), matching what callers actually supply.",
+        "reasoning": "",
+        "summary_hash": "e1cb2ee6"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::type_safety::bare_counter_annotations": {
+      "id": "review::.::holistic::type_safety::bare_counter_annotations",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "tokenize and raw_choice_scores use bare Counter, dropping the str key type",
+      "detail": {
+        "holistic": true,
+        "dimension": "type_safety",
+        "related_files": [
+          "lev/engine.py"
+        ],
+        "evidence": [
+          "tokenize(text: str) -> Counter (engine.py:40) returns Counter[str] but declares unparameterized Counter",
+          "raw_choice_scores(state: Counter, ...) (engine.py:58) indexes state[tok] with str keys, confirming Counter[str]"
+        ],
+        "suggestion": "Change both annotations to Counter[str] to preserve the key type at call sites.",
+        "reasoning": "",
+        "summary_hash": "18a0686f"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::type_safety::untyped_dict_router_param": {
+      "id": "review::.::holistic::type_safety::untyped_dict_router_param",
+      "detector": "review",
+      "file": ".",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "question_from_dict takes unparameterized dict despite accessing a known JSON shape",
+      "detail": {
+        "holistic": true,
+        "dimension": "type_safety",
+        "related_files": [
+          "lev/router.py"
+        ],
+        "evidence": [
+          "def question_from_dict(data: dict) -> ... (router.py:4) accesses data.get('type'), data.get('labels'), data.get('question'), data.get('low_anchor'), data.get('high_anchor'), a fixed set of known keys",
+          "Callers validate the payload shape in cli.py (isinstance checks on 'questions' list of dicts) before calling, so the expected structure is established"
+        ],
+        "suggestion": "Annotate as dict[str, Any] (or a TypedDict if mypy is adopted) to make the expected shape explicit; alternatively leave as-is if dict is the deliberate JSON-boundary convention.",
+        "reasoning": "",
+        "summary_hash": "b77b5df1"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-09-30T17:22:13+00:00",
+      "last_seen": "2026-09-30T17:22:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "work_item_kind": "review_defect",
+      "issue_kind": "review_defect",
+      "origin": "review_import",
+      "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
       "suppression_pattern": null
@@ -709,13 +1671,130 @@
     "source": "scan"
   },
   "subjective_integrity": {
-    "status": "pass",
-    "target_score": 85.0,
+    "status": "disabled",
+    "target_score": null,
     "matched_count": 0,
     "matched_dimensions": [],
     "reset_dimensions": []
   },
-  "subjective_assessments": {},
+  "subjective_assessments": {
+    "abstraction_fitness": {
+      "score": 95.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "components": [
+        "Abstraction Leverage",
+        "Indirection Cost",
+        "Interface Honesty",
+        "Delegation Density",
+        "Definition Directness",
+        "Type Discipline"
+      ],
+      "component_scores": {
+        "Abstraction Leverage": 95.0,
+        "Indirection Cost": 98.0,
+        "Interface Honesty": 96.0,
+        "Delegation Density": 100.0,
+        "Definition Directness": 92.0,
+        "Type Discipline": 96.0
+      }
+    },
+    "ai_generated_debt": {
+      "score": 96.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "api_surface_coherence": {
+      "score": 88.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "authorization_consistency": {
+      "score": 100,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "contract_coherence": {
+      "score": 95.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "convention_outlier": {
+      "score": 93.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "cross_module_architecture": {
+      "score": 92.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "dependency_health": {
+      "score": 92.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "design_coherence": {
+      "score": 88.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "error_consistency": {
+      "score": 88.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "high_level_elegance": {
+      "score": 88.5,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "incomplete_migration": {
+      "score": 100,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "initialization_coupling": {
+      "score": 93.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "logic_clarity": {
+      "score": 94.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "low_level_elegance": {
+      "score": 90.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "mid_level_elegance": {
+      "score": 90.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "naming_quality": {
+      "score": 90.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "package_organization": {
+      "score": 92.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "test_strategy": {
+      "score": 90.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    },
+    "type_safety": {
+      "score": 90.0,
+      "source": "holistic",
+      "assessed_at": "2026-09-30T17:22:13+00:00"
+    }
+  },
   "scan_history": [
     {
       "timestamp": "2026-09-30T17:15:13+00:00",
@@ -843,6 +1922,135 @@
         "Type safety": {
           "score": 0.0,
           "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-09-30T17:22:13+00:00",
+      "lang": "python",
+      "strict_score": 92.8,
+      "verified_strict_score": 98.4,
+      "objective_score": 98.4,
+      "overall_score": 92.8,
+      "open": 48,
+      "diff_new": 24,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 24,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "disabled",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": null
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 96.1,
+          "strict": 96.1
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Abstraction fit": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "AI generated debt": {
+          "score": 96.0,
+          "strict": 96.0
+        },
+        "API coherence": {
+          "score": 88.0,
+          "strict": 88.0
+        },
+        "Auth consistency": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Contracts": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Convention drift": {
+          "score": 93.0,
+          "strict": 93.0
+        },
+        "Cross-module arch": {
+          "score": 92.0,
+          "strict": 92.0
+        },
+        "Dep health": {
+          "score": 92.0,
+          "strict": 92.0
+        },
+        "Design coherence": {
+          "score": 88.0,
+          "strict": 88.0
+        },
+        "Error consistency": {
+          "score": 88.0,
+          "strict": 88.0
+        },
+        "High elegance": {
+          "score": 88.5,
+          "strict": 88.5
+        },
+        "Stale migration": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Init coupling": {
+          "score": 93.0,
+          "strict": 93.0
+        },
+        "Logic clarity": {
+          "score": 94.0,
+          "strict": 94.0
+        },
+        "Low elegance": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Mid elegance": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Naming quality": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Structure nav": {
+          "score": 92.0,
+          "strict": 92.0
+        },
+        "Test strategy": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Type safety": {
+          "score": 90.0,
+          "strict": 90.0
         }
       }
     }
@@ -1224,6 +2432,14 @@
         },
         "near_pairs": []
       }
+    },
+    "files": {},
+    "holistic": {
+      "reviewed_at": "2026-09-30T17:22:13+00:00",
+      "file_count_at_review": 6,
+      "issue_count": 24,
+      "reviewed_files_count": 0,
+      "full_sweep_included": false
     }
   },
   "lang_capabilities": {
@@ -1237,7 +2453,7 @@
     "test": 7
   },
   "tool_hash": "2ead5ae7d4e6",
-  "scan_path": ".",
+  "scan_path": null,
   "scan_completeness": {
     "python": "full"
   },
@@ -1264,7 +2480,8 @@
       "subjective_review": 20,
       "boilerplate_duplication": 0,
       "dupes": 10,
-      "stale_wontfix": 0
+      "stale_wontfix": 0,
+      "review": 10
     }
   },
   "codebase_metrics": {
@@ -1404,41 +2621,56 @@
       }
     },
     "Abstraction fit": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 95.0,
+      "strict": 95.0,
+      "verified_strict_score": 95.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.95,
+          "failing": 1,
+          "weighted_failures": 0.5,
+          "assessment_score": 95.0,
+          "placeholder": false,
           "dimension_key": "abstraction_fitness",
           "configured_weight": 8.0,
-          "components": []
+          "components": [
+            "Abstraction Leverage",
+            "Indirection Cost",
+            "Interface Honesty",
+            "Delegation Density",
+            "Definition Directness",
+            "Type Discipline"
+          ],
+          "component_scores": {
+            "Abstraction Leverage": 95.0,
+            "Indirection Cost": 98.0,
+            "Interface Honesty": 96.0,
+            "Delegation Density": 100.0,
+            "Definition Directness": 92.0,
+            "Type Discipline": 96.0
+          }
         }
       }
     },
     "AI generated debt": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 96.0,
+      "strict": 96.0,
+      "verified_strict_score": 96.0,
       "checks": 10,
       "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
+          "pass_rate": 0.96,
           "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "weighted_failures": 0.4,
+          "assessment_score": 96.0,
+          "placeholder": false,
           "dimension_key": "ai_generated_debt",
           "configured_weight": 1.0,
           "components": []
@@ -1446,20 +2678,20 @@
       }
     },
     "API coherence": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 88.0,
+      "strict": 88.0,
+      "verified_strict_score": 88.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 3,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.88,
+          "failing": 3,
+          "weighted_failures": 1.2,
+          "assessment_score": 88.0,
+          "placeholder": false,
           "dimension_key": "api_surface_coherence",
           "configured_weight": 1.0,
           "components": []
@@ -1467,20 +2699,20 @@
       }
     },
     "Auth consistency": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 100.0,
+      "strict": 100.0,
+      "verified_strict_score": 100.0,
       "checks": 10,
       "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
+          "pass_rate": 1.0,
           "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "weighted_failures": 0.0,
+          "assessment_score": 100.0,
+          "placeholder": false,
           "dimension_key": "authorization_consistency",
           "configured_weight": 1.0,
           "components": []
@@ -1488,20 +2720,20 @@
       }
     },
     "Contracts": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 95.0,
+      "strict": 95.0,
+      "verified_strict_score": 95.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.95,
+          "failing": 1,
+          "weighted_failures": 0.5,
+          "assessment_score": 95.0,
+          "placeholder": false,
           "dimension_key": "contract_coherence",
           "configured_weight": 12.0,
           "components": []
@@ -1509,20 +2741,20 @@
       }
     },
     "Convention drift": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 93.0,
+      "strict": 93.0,
+      "verified_strict_score": 93.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.93,
+          "failing": 1,
+          "weighted_failures": 0.7,
+          "assessment_score": 93.0,
+          "placeholder": false,
           "dimension_key": "convention_outlier",
           "configured_weight": 1.0,
           "components": []
@@ -1530,20 +2762,20 @@
       }
     },
     "Cross-module arch": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 92.0,
+      "strict": 92.0,
+      "verified_strict_score": 92.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 2,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.92,
+          "failing": 2,
+          "weighted_failures": 0.8,
+          "assessment_score": 92.0,
+          "placeholder": false,
           "dimension_key": "cross_module_architecture",
           "configured_weight": 1.0,
           "components": []
@@ -1551,20 +2783,20 @@
       }
     },
     "Dep health": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 92.0,
+      "strict": 92.0,
+      "verified_strict_score": 92.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.92,
+          "failing": 1,
+          "weighted_failures": 0.8,
+          "assessment_score": 92.0,
+          "placeholder": false,
           "dimension_key": "dependency_health",
           "configured_weight": 1.0,
           "components": []
@@ -1572,20 +2804,20 @@
       }
     },
     "Design coherence": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 88.0,
+      "strict": 88.0,
+      "verified_strict_score": 88.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 2,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.88,
+          "failing": 2,
+          "weighted_failures": 1.2,
+          "assessment_score": 88.0,
+          "placeholder": false,
           "dimension_key": "design_coherence",
           "configured_weight": 10.0,
           "components": []
@@ -1593,20 +2825,20 @@
       }
     },
     "Error consistency": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 88.0,
+      "strict": 88.0,
+      "verified_strict_score": 88.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 2,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.88,
+          "failing": 2,
+          "weighted_failures": 1.2,
+          "assessment_score": 88.0,
+          "placeholder": false,
           "dimension_key": "error_consistency",
           "configured_weight": 3.0,
           "components": []
@@ -1614,20 +2846,20 @@
       }
     },
     "High elegance": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 88.5,
+      "strict": 88.5,
+      "verified_strict_score": 88.5,
       "checks": 10,
-      "failing": 0,
+      "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.885,
+          "failing": 1,
+          "weighted_failures": 1.15,
+          "assessment_score": 88.5,
+          "placeholder": false,
           "dimension_key": "high_level_elegance",
           "configured_weight": 22.0,
           "components": []
@@ -1635,20 +2867,20 @@
       }
     },
     "Stale migration": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 100.0,
+      "strict": 100.0,
+      "verified_strict_score": 100.0,
       "checks": 10,
       "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
+          "pass_rate": 1.0,
           "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "weighted_failures": 0.0,
+          "assessment_score": 100.0,
+          "placeholder": false,
           "dimension_key": "incomplete_migration",
           "configured_weight": 1.0,
           "components": []
@@ -1656,20 +2888,20 @@
       }
     },
     "Init coupling": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 93.0,
+      "strict": 93.0,
+      "verified_strict_score": 93.0,
       "checks": 10,
       "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
+          "pass_rate": 0.93,
           "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "weighted_failures": 0.7,
+          "assessment_score": 93.0,
+          "placeholder": false,
           "dimension_key": "initialization_coupling",
           "configured_weight": 1.0,
           "components": []
@@ -1677,20 +2909,20 @@
       }
     },
     "Logic clarity": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 94.0,
+      "strict": 94.0,
+      "verified_strict_score": 94.0,
       "checks": 10,
       "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
+          "pass_rate": 0.94,
           "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "weighted_failures": 0.6,
+          "assessment_score": 94.0,
+          "placeholder": false,
           "dimension_key": "logic_clarity",
           "configured_weight": 6.0,
           "components": []
@@ -1698,20 +2930,20 @@
       }
     },
     "Low elegance": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 90.0,
+      "strict": 90.0,
+      "verified_strict_score": 90.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 3,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.9,
+          "failing": 3,
+          "weighted_failures": 1.0,
+          "assessment_score": 90.0,
+          "placeholder": false,
           "dimension_key": "low_level_elegance",
           "configured_weight": 12.0,
           "components": []
@@ -1719,20 +2951,20 @@
       }
     },
     "Mid elegance": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 90.0,
+      "strict": 90.0,
+      "verified_strict_score": 90.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 2,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.9,
+          "failing": 2,
+          "weighted_failures": 1.0,
+          "assessment_score": 90.0,
+          "placeholder": false,
           "dimension_key": "mid_level_elegance",
           "configured_weight": 22.0,
           "components": []
@@ -1740,20 +2972,20 @@
       }
     },
     "Naming quality": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 90.0,
+      "strict": 90.0,
+      "verified_strict_score": 90.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.9,
+          "failing": 1,
+          "weighted_failures": 1.0,
+          "assessment_score": 90.0,
+          "placeholder": false,
           "dimension_key": "naming_quality",
           "configured_weight": 2.0,
           "components": []
@@ -1761,20 +2993,20 @@
       }
     },
     "Structure nav": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 92.0,
+      "strict": 92.0,
+      "verified_strict_score": 92.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.92,
+          "failing": 1,
+          "weighted_failures": 0.8,
+          "assessment_score": 92.0,
+          "placeholder": false,
           "dimension_key": "package_organization",
           "configured_weight": 5.0,
           "components": []
@@ -1782,20 +3014,20 @@
       }
     },
     "Test strategy": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 90.0,
+      "strict": 90.0,
+      "verified_strict_score": 90.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.9,
+          "failing": 1,
+          "weighted_failures": 1.0,
+          "assessment_score": 90.0,
+          "placeholder": false,
           "dimension_key": "test_strategy",
           "configured_weight": 1.0,
           "components": []
@@ -1803,20 +3035,20 @@
       }
     },
     "Type safety": {
-      "score": 0.0,
-      "strict": 0.0,
-      "verified_strict_score": 0.0,
+      "score": 90.0,
+      "strict": 90.0,
+      "verified_strict_score": 90.0,
       "checks": 10,
-      "failing": 0,
+      "failing": 2,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.0,
-          "failing": 0,
-          "weighted_failures": 10.0,
-          "assessment_score": 0.0,
-          "placeholder": true,
+          "pass_rate": 0.9,
+          "failing": 2,
+          "weighted_failures": 1.0,
+          "assessment_score": 90.0,
+          "placeholder": false,
           "dimension_key": "type_safety",
           "configured_weight": 12.0,
           "components": []
@@ -1827,5 +3059,20 @@
   "reminder_history": {
     "zone_classification": 1,
     "report_scores": 1
-  }
+  },
+  "assessment_import_audit": [
+    {
+      "timestamp": "2026-09-30T17:22:13+00:00",
+      "mode": "trusted_internal",
+      "trusted": true,
+      "reason": "trusted import-run replay from 20260930_171646",
+      "override_used": false,
+      "attested_external": false,
+      "provisional": false,
+      "provisional_count": 0,
+      "attest": "",
+      "import_file": ".desloppify/subagents/runs/20260930_171646/holistic_issues_merged.json",
+      "packet_sha256": "538b943e8694511976a640c5218aaaa1bd4f3905136d2496da10849f82af9c26"
+    }
+  ]
 }

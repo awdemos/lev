@@ -1,6 +1,7 @@
 import argparse
 import json
 import sys
+from dataclasses import asdict
 from pathlib import Path
 
 from lev.loop import classify
@@ -21,24 +22,24 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     try:
-        payload = json.loads(Path(args.questions).read_text())
+        payload = json.loads(Path(args.questions).read_text(encoding="utf-8"))
         if not isinstance(payload, dict):
             raise ValueError("questions file must contain a JSON object")
-        questions = payload["questions"]
+        questions = payload.get("questions")
         if not isinstance(questions, list) or not all(
             isinstance(q, dict) for q in questions
         ):
-            raise ValueError("'questions' must be a list of objects")
+            raise ValueError("questions file must contain a 'questions' list")
         results = [
             classify(args.state, question_from_dict(q), args.threshold, args.max_iters)
             for q in questions
         ]
-    except (ValueError, KeyError, OSError) as exc:
+    except (ValueError, OSError) as exc:
         print(f"lev: error: {exc}", file=sys.stderr)
         return 1
 
     for result in results:
-        print(json.dumps(result.__dict__, indent=2))
+        print(json.dumps(asdict(result), indent=2))
     return 0
 
 

@@ -1,63 +1,251 @@
 {
   "command": "show",
-  "query": "smells",
+  "query": "review",
   "status_filter": "open",
-  "total": 1,
+  "total": 10,
   "summary": {
     "by_tier": {
-      "T3": 1
+      "T1": 6,
+      "T2": 4
     },
     "by_detector": {
-      "smells": 1
+      "review": 10
     },
     "files": 1
   },
   "by_file": {
-    "lev/engine.py": [
+    ".": [
       {
-        "id": "smells::lev/engine.py::high_cyclomatic_complexity",
-        "tier": 3,
-        "confidence": "medium",
-        "summary": "1x High cyclomatic complexity (>12 decision points)",
+        "id": "review::.::holistic::cross_module_architecture::unused-counter-import-loop",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "lev/loop.py imports collections.Counter but never uses it",
         "detail": {
-          "smell_id": "high_cyclomatic_complexity",
-          "severity": "medium",
-          "count": 1,
-          "lines": [
-            18
-          ]
+          "holistic": true,
+          "dimension": "cross_module_architecture",
+          "related_files": [
+            "lev/loop.py"
+          ],
+          "evidence": [
+            "lev/loop.py:2 'from collections import Counter' \u2014 Counter appears nowhere else in the file; tokenize() in engine.py is what produces Counters."
+          ],
+          "suggestion": "Delete the unused import line.",
+          "reasoning": "",
+          "summary_hash": "19b065eb"
+        }
+      },
+      {
+        "id": "review::.::holistic::dependency_health::unused_counter_import_loop",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "Unused `from collections import Counter` import in lev/loop.py",
+        "detail": {
+          "holistic": true,
+          "dimension": "dependency_health",
+          "related_files": [
+            "lev/loop.py"
+          ],
+          "evidence": [
+            "lev/loop.py:2 `from collections import Counter` \u2014 Counter is never referenced anywhere in loop.py; the only Counter usage is in lev/engine.py (tokenize returns Counter, raw_choice_scores takes Counter)"
+          ],
+          "suggestion": "Delete line 2 (`from collections import Counter`) from lev/loop.py; no other change needed.",
+          "reasoning": "",
+          "summary_hash": "45850dfa"
+        }
+      },
+      {
+        "id": "review::.::holistic::design_coherence::unused-counter-import-loop",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "lev/loop.py imports Counter but never uses it",
+        "detail": {
+          "holistic": true,
+          "dimension": "design_coherence",
+          "related_files": [
+            "lev/loop.py"
+          ],
+          "evidence": [
+            "lev/loop.py:2 `from collections import Counter` \u2014 Counter is only referenced in re-export telemetry; no use in the module body"
+          ],
+          "suggestion": "Delete the unused import from lev/loop.py:2.",
+          "reasoning": "",
+          "summary_hash": "b0298f8a"
+        }
+      },
+      {
+        "id": "review::.::holistic::low_level_elegance::unused_counter_import_loop",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "lev/loop.py imports collections.Counter but never references it",
+        "detail": {
+          "holistic": true,
+          "dimension": "low_level_elegance",
+          "related_files": [
+            "lev/loop.py"
+          ],
+          "evidence": [
+            "lev/loop.py:2: `from collections import Counter` \u2014 Counter appears nowhere else in the file (tokenize returns Counter but is imported from lev.engine)"
+          ],
+          "suggestion": "Remove the unused `from collections import Counter` import line.",
+          "reasoning": "",
+          "summary_hash": "0816f404"
+        }
+      },
+      {
+        "id": "review::.::holistic::mid_level_elegance::loop_unused_counter_import",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "Unused Counter import at the engine\u2192loop module seam",
+        "detail": {
+          "holistic": true,
+          "dimension": "mid_level_elegance",
+          "related_files": [
+            "lev/loop.py"
+          ],
+          "evidence": [
+            "loop.py:2 imports Counter from collections but never references it \u2014 dead import noise on a module whose only job is orchestrating engine functions."
+          ],
+          "suggestion": "Delete the unused 'from collections import Counter' line in loop.py:2.",
+          "reasoning": "",
+          "summary_hash": "17188ce7"
+        }
+      },
+      {
+        "id": "review::.::holistic::type_safety::bare_counter_annotations",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "tokenize and raw_choice_scores use bare Counter, dropping the str key type",
+        "detail": {
+          "holistic": true,
+          "dimension": "type_safety",
+          "related_files": [
+            "lev/engine.py"
+          ],
+          "evidence": [
+            "tokenize(text: str) -> Counter (engine.py:40) returns Counter[str] but declares unparameterized Counter",
+            "raw_choice_scores(state: Counter, ...) (engine.py:58) indexes state[tok] with str keys, confirming Counter[str]"
+          ],
+          "suggestion": "Change both annotations to Counter[str] to preserve the key type at call sites.",
+          "reasoning": "",
+          "summary_hash": "18a0686f"
+        }
+      },
+      {
+        "id": "review::.::holistic::api_surface_coherence::classify_missing_error_contract",
+        "tier": 2,
+        "confidence": "medium",
+        "summary": "Public classify() and question_from_dict() have no docstrings; ValueError failure modes are undocumented",
+        "detail": {
+          "holistic": true,
+          "dimension": "api_surface_coherence",
+          "related_files": [
+            "lev/loop.py",
+            "lev/router.py"
+          ],
+          "evidence": [
+            "lev/loop.py:29-32 raises ValueError for threshold/max_iters and lev/loop.py:45 raises for empty labels, but classify() has no docstring stating these preconditions",
+            "lev/router.py:9-19 raises three distinct ValueErrors in question_from_dict() with no documentation of the error contract"
+          ],
+          "suggestion": "Add one-line docstrings to classify() and question_from_dict() listing the raised ValueError conditions (threshold range, max_iters >= 1, non-empty labels, unknown type), so callers can rely on the contract without reading implementations.",
+          "reasoning": "",
+          "summary_hash": "c6e7552d"
+        }
+      },
+      {
+        "id": "review::.::holistic::api_surface_coherence::duplicated_anchor_defaults",
+        "tier": 2,
+        "confidence": "medium",
+        "summary": "ScoreQuestion anchor defaults are duplicated as string literals in types.py and router.py",
+        "detail": {
+          "holistic": true,
+          "dimension": "api_surface_coherence",
+          "related_files": [
+            "lev/types.py",
+            "lev/router.py"
+          ],
+          "evidence": [
+            "lev/types.py:13-14 sets low_anchor='worst case', high_anchor='best case' as dataclass defaults",
+            "lev/router.py:16-17 repeats str(data.get('low_anchor', 'worst case')) and 'best case' verbatim, so a change to the dataclass default would not propagate"
+          ],
+          "suggestion": "Reference the dataclass defaults in router.py (e.g. build the object first and fill missing keys from a ScoreQuestion() instance, or define module-level constants in types.py and use them in both places) so the dict-parsing path and the type agree by construction.",
+          "reasoning": "",
+          "summary_hash": "b3eef179"
+        }
+      },
+      {
+        "id": "review::.::holistic::design_coherence::no-op-deliberation-loop-score",
+        "tier": 2,
+        "confidence": "medium",
+        "summary": "_classify_score uses a while loop whose body only increments a counter, mimicking the choice path's loop without doing iterative work",
+        "detail": {
+          "holistic": true,
+          "dimension": "design_coherence",
+          "related_files": [
+            "lev/loop.py"
+          ],
+          "evidence": [
+            "lev/loop.py:84-85: `while conf < threshold and iterations < max_iters: iterations += 1` \u2014 a three-line explanation comment is required because the structure falsely implies computation happens each iteration"
+          ],
+          "suggestion": "Replace the loop with direct arithmetic: `iterations = 1 if conf >= threshold else max_iters` (keeping the existing comment explaining why the score loop is degenerate).",
+          "reasoning": "",
+          "summary_hash": "3fe9fccc"
+        }
+      },
+      {
+        "id": "review::.::holistic::error_consistency::cli-keyerror-message",
+        "tier": 2,
+        "confidence": "medium",
+        "summary": "Missing 'questions' key surfaces as bare key repr with no structural context",
+        "detail": {
+          "holistic": true,
+          "dimension": "error_consistency",
+          "related_files": [
+            "lev/cli.py"
+          ],
+          "evidence": [
+            "In cli.py, `questions = payload[\"questions\"]` can raise KeyError, and the except (ValueError, KeyError, OSError) handler prints f\"lev: error: {exc}\" - producing 'lev: error: \\'questions\\'' with no indication the key was expected in the questions file"
+          ],
+          "suggestion": "Use payload.get(\"questions\") and raise ValueError(\"questions file must contain a 'questions' list\") when missing, so all failures flow through the descriptive ValueError path and the KeyError branch can be dropped.",
+          "reasoning": "",
+          "summary_hash": "2df78130"
         }
       }
     ]
   },
-  "total_matching": 1,
+  "total_matching": 24,
+  "hidden": {
+    "by_detector": {
+      "review": 14
+    },
+    "total": 14
+  },
   "noise_budget": 10,
   "noise_global_budget": 0,
   "narrative": {
-    "phase": "first_scan",
-    "headline": "First scan complete. 24 open issues across 3 dimensions.",
+    "phase": "early_momentum",
+    "headline": "Crossed 90% strict! (24 review work items \u2014 run `desloppify show review --status open`)",
     "dimensions": {
       "lowest_dimensions": [
         {
-          "name": "Abstraction fit",
-          "strict": 0.0,
-          "failing": 0,
-          "impact": 0.0,
-          "subjective": true,
-          "impact_description": "re-review to improve"
-        },
-        {
-          "name": "AI generated debt",
-          "strict": 0.0,
-          "failing": 0,
-          "impact": 0.0,
-          "subjective": true,
-          "impact_description": "re-review to improve"
-        },
-        {
           "name": "API coherence",
-          "strict": 0.0,
-          "failing": 0,
+          "strict": 88.0,
+          "failing": 3,
+          "impact": 0.0,
+          "subjective": true,
+          "impact_description": "re-review to improve"
+        },
+        {
+          "name": "Design coherence",
+          "strict": 88.0,
+          "failing": 2,
+          "impact": 0.0,
+          "subjective": true,
+          "impact_description": "re-review to improve"
+        },
+        {
+          "name": "Error consistency",
+          "strict": 88.0,
+          "failing": 2,
           "impact": 0.0,
           "subjective": true,
           "impact_description": "re-review to improve"
@@ -79,6 +267,17 @@
         "lane": "refactor_0"
       },
       {
+        "type": "refactor",
+        "detector": "review",
+        "count": 24,
+        "description": "24 review work items need investigation \u2014 run `desloppify show review --status open` to see them",
+        "command": "desloppify show review --status open",
+        "impact": 0.0,
+        "dimension": "Unknown",
+        "priority": 2,
+        "lane": "refactor_1"
+      },
+      {
         "type": "manual_fix",
         "detector": "unused",
         "count": 2,
@@ -86,8 +285,8 @@
         "command": "desloppify show unused --status open",
         "impact": 0.0,
         "dimension": "Code quality",
-        "priority": 2,
-        "lane": "refactor_1"
+        "priority": 3,
+        "lane": "refactor_2"
       },
       {
         "type": "manual_fix",
@@ -97,17 +296,6 @@
         "command": "desloppify show smells --status open",
         "impact": 0.0,
         "dimension": "Code quality",
-        "priority": 3,
-        "lane": "refactor_2"
-      },
-      {
-        "type": "manual_fix",
-        "detector": "subjective_review",
-        "count": 20,
-        "description": "20 assessment requests need review \u2014 run holistic review to refresh subjective scores",
-        "command": "desloppify review --prepare",
-        "impact": 0.0,
-        "dimension": "Unknown",
         "priority": 4,
         "lane": "refactor_3"
       }
@@ -115,7 +303,7 @@
     "strategy": {
       "fixer_leverage": {
         "auto_fixable_count": 0,
-        "total_count": 44,
+        "total_count": 76,
         "coverage": 0.0,
         "impact_ratio": 0.0,
         "recommendation": "none"
@@ -134,7 +322,7 @@
           "actions": [
             2
           ],
-          "file_count": 2,
+          "file_count": 1,
           "total_impact": 0.0,
           "automation": "manual",
           "run_first": false
@@ -143,7 +331,7 @@
           "actions": [
             3
           ],
-          "file_count": 1,
+          "file_count": 2,
           "total_impact": 0.0,
           "automation": "manual",
           "run_first": false
@@ -159,7 +347,7 @@
         }
       },
       "can_parallelize": false,
-      "hint": "Work through actions in priority order. Rescan after each fix to track progress."
+      "hint": "Work through actions in priority order. Rescan after each fix to track progress. Review: 24 issue(s) \u2014 `desloppify show review --status open`."
     },
     "tools": {
       "fixers": [],
@@ -187,12 +375,12 @@
       "worst_gap": 0.0,
       "trend": "stable"
     },
-    "milestone": null,
+    "milestone": "Crossed 90% strict!",
     "primary_action": {
       "command": "desloppify show structural --status open",
       "description": "1 structural work items \u2014 review large files \u2014 split only when responsibilities are clearly separable"
     },
-    "why_now": "Work through actions in priority order. Rescan after each fix to track progress.",
+    "why_now": "Work through actions in priority order. Rescan after each fix to track progress. Review: 24 issue(s) \u2014 `desloppify show review --status open`.",
     "verification_step": {
       "command": "desloppify scan",
       "reason": "revalidate after changes"
@@ -200,23 +388,47 @@
     "risk_flags": [],
     "strict_target": {
       "target": 85.0,
-      "current": 24.6,
-      "gap": 60.4,
-      "state": "below",
+      "current": 92.8,
+      "gap": -7.8,
+      "state": "above",
       "warning": null
     },
     "reminders": [
+      {
+        "type": "review_issues_pending",
+        "message": "24 review work item(s) need investigation. Run `desloppify show review --status open` to see the work queue.",
+        "command": "desloppify show review --status open",
+        "priority": 1,
+        "severity": "high"
+      },
       {
         "type": "zone_classification",
         "message": "7 of 13 files classified as non-production (7 test). Override with `desloppify zone set <file> production` if any are misclassified.",
         "command": "desloppify zone show",
         "priority": 2,
         "severity": "medium"
+      },
+      {
+        "type": "badge_recommendation",
+        "message": "Score is above 90! Add the scorecard to your README: <img src=\"scorecard.png\" width=\"100%\">",
+        "command": null,
+        "priority": 3,
+        "severity": "low"
+      },
+      {
+        "type": "review_not_run",
+        "message": "Mechanical checks look good! Run a subjective design review to catch issues linters miss: desloppify review --prepare",
+        "command": "desloppify review --prepare",
+        "priority": 3,
+        "severity": "low"
       }
     ],
     "reminder_history": {
       "zone_classification": 2,
-      "report_scores": 1
+      "report_scores": 1,
+      "review_issues_pending": 1,
+      "badge_recommendation": 1,
+      "review_not_run": 1
     }
   },
   "config": {

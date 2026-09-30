@@ -1,0 +1,90 @@
+{
+  "batch": "abstraction_fitness",
+  "batch_index": 6,
+  "assessments": {
+    "abstraction_fitness": 95.0
+  },
+  "dimension_notes": {
+    "abstraction_fitness": {
+      "evidence": [
+        "All 6 production modules are small (avg ~47 LOC) with a single layer between CLI (lev/cli.py), orchestration (lev/loop.py), engine (lev/engine.py), and typed domain models (lev/types.py); no helper chains or wrapper hops exist anywhere.",
+        "lev/router.py converts untyped JSON dicts into frozen dataclasses at a single obvious boundary; no dict/config parameter bags leak past the boundary into engine or loop logic.",
+        "No Protocols, ABCs, single-implementation interfaces, *args/**kwargs forwarders, or generic utils modules exist; all engine functions operate directly on concrete Counter/dict types.",
+        "lev/__init__.py is an intentional 13-line public facade with __all__ (skip-listed), and the mechanical facade flags on loop.py/cli.py are import-driven false positives, not re-export surfaces.",
+        "Only minor indirection: engine.confidence() is a one-line wrapper around max(dist.values()) used at 3 call sites, a domain alias whose value is borderline."
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "engine.confidence() is a thin pass-through alias for max(dist.values()) — the only layer of indirection in the codebase that does not clearly pay for itself; removing or inlining it is a judgment call.",
+      "sub_axes": {
+        "abstraction_leverage": 95.0,
+        "indirection_cost": 98.0,
+        "interface_honesty": 96.0,
+        "delegation_density": 100.0,
+        "definition_directness": 92.0,
+        "type_discipline": 96.0
+      }
+    }
+  },
+  "dimension_judgment": {
+    "abstraction_fitness": {
+      "dimension_character": "This is a small, flat, deliberately direct codebase: four frozen dataclasses in types.py, a pure-function engine, one orchestration loop, a JSON-to-model router, and a CLI. Every layer maps to a domain responsibility and abstractions are concrete — there are no protocols, generic helper modules, kwargs forwarders, or implicit parameter bags; dicts are converted to typed models at exactly one boundary (router.py). The single mechanical 'wrapper' signals (confidence, tokenize) are domain-named one-liners, not indirection chains.",
+      "score_rationale": "Against the global anchors this sits between strong (90) and exemplary (100): a developer benefits from essentially every layer and navigates from CLI to engine in one hop. The only cost is confidence() being a borderline alias for max(dist.values()) plus the mechanical facade flags on loop.py/cli.py which are import-driven false positives. Nothing here slows a developer down materially, keeping the score in the mid-90s rather than 100."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "abstraction_fitness",
+      "identifier": "confidence_thin_wrapper",
+      "summary": "engine.confidence() is a pass-through one-liner wrapping max(dist.values()) with no policy or translation",
+      "related_files": ["lev/engine.py", "lev/loop.py"],
+      "evidence": [
+        "lev/engine.py: confidence() body is exactly `return max(dist.values())` with no validation, scaling, or other logic",
+        "The name adds domain vocabulary over max(), but at 3 trivial call sites (all in loop.py) the indirection does not pay for itself"
+      ],
+      "suggestion": "Either inline max(dist.values()) at the loop.py call sites, or keep confidence() only if the project intends to evolve it (e.g. margin-based confidence); if kept, add a brief docstring stating it is the deliberate confidence contract so future readers do not treat it as dead indirection.",
+      "confidence": "low",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": [
+      "facade_modules flags on lev/loop.py and lev/cli.py — high re-export ratio is caused by module-level import statements, not re-export surfaces; these modules define real logic",
+      "pass_through_wrappers signal 'tokenize->Counter' — tokenize() is a real implementation (regex, stopwords, stemming), not a forwarder"
+    ]
+  },
+  "context_updates": {
+    "abstraction_fitness": {
+      "add": [
+        {
+          "header": "Flat four-layer direct module structure",
+          "description": "cli -> loop -> engine -> types is the only layering; there are no helper layers, generic utils, or adapter chains, so any change reaches real logic in one hop. This is deliberate given the 282-LOC size of the package.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "Single JSON-to-model boundary in router.py",
+          "description": "Untyped dict input is validated and converted to frozen dataclasses exactly once in question_from_dict; downstream engine/loop code never touches raw dicts, so there are no implicit parameter bags.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "No speculative abstractions anywhere",
+          "description": "Zero Protocols, ABCs, single-impl interfaces, or *args/**kwargs forwarders across all 6 modules; abstractions are concrete functions and frozen dataclasses only.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "engine.confidence() is the only borderline wrapper",
+          "description": "confidence() wraps max(dist.values()) as a domain-named alias used at 3 sites; its value depends on whether the confidence contract is expected to evolve, so it is left as a low-confidence observation rather than a defect.",
+          "settled": false,
+          "positive": false
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "batch": "convention_outlier",
+  "batch_index": 3,
+  "assessments": {
+    "convention_outlier": 93.0
+  },
+  "dimension_notes": {
+    "convention_outlier": {
+      "evidence": [
+        "All six production modules use uniform snake_case functions, PascalCase classes, and UPPER_SNAKE module constants (lev/engine.py TOKEN_RE, STOPWORDS, _RULES; lev/loop.py _POSITIVE, _NEGATIVE).",
+        "Single type strategy throughout: all four domain objects in lev/types.py are frozen dataclasses (type_strategy_census confirms frozen_dataclass: 4, zero TypedDict/NamedTuple mixing).",
+        "lev/__init__.py re-export surface is small and explicit (6 symbols, __all__ defined) and matches what cli.py imports directly from submodules; it does not obscure internal structure.",
+        "Error behavior varies by layer but intentionally so: cli.py catches (ValueError, KeyError, OSError) and returns exit code 1 while loop.py/router.py raise — this is the documented 'throw in core, handle at CLI boundary' split, an allowed intentional variation.",
+        "No naming drift: conventions.naming_drift / naming_by_directory shows only snake_case in lev/; no duplicate_clusters or sibling_behavior divergence signals.",
+        "Minor rough edge: lev/router.py question_from_dict takes bare `data: dict` while every other public function in the package carries precise annotations (dict[str, float], Counter, etc.) — a small typing-convention island rather than an organizational one."
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "Only isolated rough edges keep this from higher: router.py's untyped `data: dict` parameter sits in an otherwise fully annotated public API, and engine.py packs its STOPWORDS frozenset onto one long line while sibling constants are formatted normally. Neither impedes navigation or pattern trust."
+    }
+  },
+  "dimension_judgment": {
+    "convention_outlier": {
+      "dimension_character": "This is a tiny, uniform codebase: six modules share one naming convention, one type strategy (frozen dataclasses for all domain objects), one error idiom per layer, and a small explicit __init__ re-export surface. A developer who learns the pattern in any one file can trust it everywhere; the only outliers are a single untyped parameter in router.py and a formatting outlier in engine.py.",
+      "score_rationale": "Against the 100=exemplary anchor, the codebase is essentially free of convention drift — no style islands, no mixed export patterns, no sibling behavioral-protocol divergence (the CLI catch-vs-raise split is intentional layer variation, which the rubric says to skip). It sits just below the top anchor because of the two minor local rough edges, consistent with the 90=strong band where only isolated friction exists."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "convention_outlier",
+      "identifier": "router_untyped_dict_param",
+      "summary": "question_from_dict takes bare `data: dict` in a codebase where every other public function is precisely annotated",
+      "related_files": ["lev/router.py"],
+      "evidence": [
+        "lev/router.py:4 `def question_from_dict(data: dict) -> ChoiceQuestion | ScoreQuestion:` — every other public API (engine.softmax dict[str, float], loop.classify ChoiceQuestion | ScoreQuestion) carries precise generic annotations, making this the one untyped-island signature."
+      ],
+      "suggestion": "Annotate as `data: dict[str, object]` (or a small TypedDict/union if input shape is worth pinning) to match the annotation discipline of the rest of the package; a single-line signature change.",
+      "confidence": "low",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  },
+  "context_updates": {
+    "convention_outlier": {
+      "add": [
+        {
+          "header": "Uniform frozen-dataclass type strategy",
+          "description": "All four domain objects in lev/types.py are @dataclass(frozen=True) with no TypedDict/NamedTuple mixing; the type_strategy_census confirms a single strategy applied consistently, so callers can rely on one object protocol.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "Small explicit __init__ re-export",
+          "description": "lev/__init__.py re-exports only 6 symbols with an explicit __all__, sized as a public API facade rather than a barrel that hides module structure; cli.py imports directly from submodules without conflict.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "Throw-in-core, catch-at-CLI error split",
+          "description": "loop.py and router.py raise ValueError on bad input while cli.py is the sole catch site converting to exit code 1; this is intentional layer variation (core throws, boundary handles), not a mixed-strategy drift.",
+          "settled": true,
+          "positive": true
+        }
+      ]
+    }
+  }
+}

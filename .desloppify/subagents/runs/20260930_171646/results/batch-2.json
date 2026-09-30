@@ -1,0 +1,79 @@
+{
+  "batch": "high_level_elegance",
+  "batch_index": 2,
+  "assessments": {
+    "high_level_elegance": 88.5
+  },
+  "dimension_notes": {
+    "high_level_elegance": {
+      "evidence": [
+        "Top-level modules map cleanly to roles: lev/types.py owns domain dataclasses, lev/engine.py owns scoring primitives (tokenize, softmax, confidence, raw_choice_scores, blend), lev/loop.py owns the classify loop, lev/router.py owns question parsing, lev/cli.py owns the CLI entry point.",
+        "Public surface is minimal and explicit: lev/__init__.py defines __all__ with exactly 6 symbols (classify, question_from_dict, and the four dataclasses) and __version__.",
+        "README.md 'Design' section matches runtime reality: the blend/softmax loop, score-as-fixed-point semantics, and no-inflation confidence behavior in lev/loop.py:81-84 all correspond to documented claims.",
+        "Ownership blur: the score-question domain logic (urgency lexicons _POSITIVE/_NEGATIVE and the urgency scoring math at lev/loop.py:12-20,65-79) lives in the loop orchestration module, while the symmetric choice-scoring primitive (raw_choice_scores) lives in lev/engine.py — engine owns scoring for one question type but not the other.",
+        "Change boundaries are otherwise predictable: adding a new question type would touch types.py, router.py, loop.py, and __init__.py in obvious ways; no hidden coupling or import-time side effects."
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The only boundary blur is the score-question lexical scoring (lexicons + scoring math) living in lev/loop.py instead of lev/engine.py alongside raw_choice_scores; moving ~20 lines would make engine the single owner of all scoring primitives."
+    }
+  },
+  "dimension_judgment": {
+    "high_level_elegance": {
+      "dimension_character": "For a 6-file, 282-LOC package, the decomposition is close to ideal: each top-level module has one nameable responsibility (types, scoring primitives, classification loop, question routing, CLI), the __init__ facade exports a tight, explicit public surface, and the README's design claims are verifiably true in the code. The single ownership wrinkle is that score-question lexical scoring (sentiment lexicons and scoring math) sits in loop.py while the symmetric choice-scoring primitive sits in engine.py, so 'engine owns scoring' is only half-true.",
+      "score_rationale": "Against the global anchors this sits between 'strong' (90) and 'solid but uneven' (80), nearer the top: a new engineer could explain every module's existence in one sentence each, and docs match runtime reality, which pushes toward exemplary. The one real deduction is the engine/loop scoring-ownership split, a minor but genuine predictability gap when extending question types. Confidence is high given the entire production surface was read directly."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "high_level_elegance",
+      "identifier": "score_lexical_scoring_in_loop_module",
+      "summary": "Score-question lexicons and scoring math live in loop.py while choice scoring lives in engine.py, splitting scoring ownership across modules",
+      "related_files": ["lev/loop.py", "lev/engine.py"],
+      "evidence": [
+        "lev/loop.py:12-20 defines _POSITIVE/_NEGATIVE lexicons and lev/loop.py:65-79 computes the urgency score inline, while the choice-question equivalent (raw_choice_scores) is a primitive in lev/engine.py:62-69",
+        "engine.py's stated role per its contents is scoring primitives (tokenize, softmax, confidence, raw_choice_scores, blend), but score questions bypass it entirely"
+      ],
+      "suggestion": "Move _POSITIVE, _NEGATIVE, and the score computation (lev/loop.py:71-79) into lev/engine.py as a raw_score_scores(tokens) primitive, leaving loop.py as pure iteration orchestration; loop.py then imports it alongside raw_choice_scores.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  },
+  "context_updates": {
+    "high_level_elegance": {
+      "add": [
+        {
+          "header": "One responsibility per top-level module",
+          "description": "Each of the 6 production files owns exactly one role (types, scoring primitives, classification loop, question routing, CLI, facade), so a new engineer can predict where any change belongs without reading imports.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "Explicit minimal facade in __init__.py",
+          "description": "lev/__init__.py declares __all__ with exactly 6 public symbols and nothing else, keeping the public surface small and greppable.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "README design section matches runtime",
+          "description": "Documented claims (softmax blend loop, score fixed-point semantics, uninflated confidence) are verifiably implemented in lev/loop.py and lev/engine.py, so the reference docs are trustworthy.",
+          "settled": true,
+          "positive": true
+        },
+        {
+          "header": "Scoring ownership split across engine and loop",
+          "description": "Choice-question scoring is a primitive in engine.py but score-question lexicons and scoring math live in loop.py, so 'engine owns scoring' holds only for one of the two question types.",
+          "settled": false,
+          "positive": false
+        }
+      ]
+    }
+  }
+}

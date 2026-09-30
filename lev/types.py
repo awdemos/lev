@@ -1,5 +1,8 @@
 from dataclasses import dataclass
 
+DEFAULT_LOW_ANCHOR = "worst case"
+DEFAULT_HIGH_ANCHOR = "best case"
+
 
 @dataclass(frozen=True)
 class ChoiceQuestion:
@@ -10,8 +13,8 @@ class ChoiceQuestion:
 @dataclass(frozen=True)
 class ScoreQuestion:
     question: str
-    low_anchor: str = "worst case"
-    high_anchor: str = "best case"
+    low_anchor: str = DEFAULT_LOW_ANCHOR
+    high_anchor: str = DEFAULT_HIGH_ANCHOR
 
 
 @dataclass(frozen=True)
