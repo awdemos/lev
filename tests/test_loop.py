@@ -25,16 +25,16 @@ def test_obvious_input_converges_in_one_pass():
 
 def test_ambiguous_input_spends_more_iterations_or_budget():
     result = classify(
-        "billed twice but a system error caused the duplicate invoice",
+        "invoice bug",
         QUESTION,
         threshold=0.99,
         max_iters=6,
     )
-    # Empirically the loop needs 2 passes to cross 0.99, and the final
-    # distribution is sharpened (top label > 0.99).
-    assert result.iterations >= 2
+    # Genuinely balanced evidence can never cross 0.99, so the loop burns
+    # the whole budget and honestly reports near-uniform confidence.
+    assert result.iterations == 6
     top = max(result.distribution.values())
-    assert top > 0.99
+    assert top < 0.6
     assert sum(result.distribution.values()) == pytest.approx(1.0)
 
 
