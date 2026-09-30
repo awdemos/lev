@@ -22,6 +22,8 @@ def main(argv: list[str] | None = None) -> int:
     classify_parser.add_argument("--threshold", type=float, default=0.9)
     classify_parser.add_argument("--max-iters", type=int, default=5)
     classify_parser.add_argument("--calibration", help="path to a calibration JSON file")
+    classify_parser.add_argument("--backend", choices=["heuristic", "onnx", "auto"],
+                               help="signal chain to use")
     calibrate_parser = sub.add_parser("calibrate", help="fit Platt scaling from labeled JSONL")
     calibrate_parser.add_argument("data", help="path to JSONL records: text, question, expected")
     calibrate_parser.add_argument("--out", required=True, help="path to write calibration JSON")
@@ -48,10 +50,11 @@ def main(argv: list[str] | None = None) -> int:
                 args.threshold,
                 args.max_iters,
                 calibration=calibration,
+                backend=args.backend,
             )
             for q in questions
         ]
-    except (ValueError, OSError) as exc:
+    except (ValueError, OSError, RuntimeError) as exc:
         print(f"lev: error: {exc}", file=sys.stderr)
         return 1
 

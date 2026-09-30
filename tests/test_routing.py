@@ -54,3 +54,11 @@ def test_decision_dataclass_defaults():
     d = Decision(action="escalate", label=None, shortlist=(),
                  confidence=0.5, calibrated=False, margin=0.0, iterations=1)
     assert d.action == "escalate"
+
+
+def test_decide_rejects_score_questions():
+    from lev.types import ScoreQuestion
+    import pytest
+
+    with pytest.raises(ValueError, match="only supports choice questions"):
+        decide("urgent outage", ScoreQuestion(question="how urgent?"))

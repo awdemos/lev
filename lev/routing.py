@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from lev.calibration import Calibration
 from lev.loop import classify
 from lev.signals import Signal
-from lev.types import ChoiceQuestion, ScoreQuestion
+from lev.types import ChoiceQuestion
 
 
 @dataclass(frozen=True)
@@ -24,7 +24,7 @@ class Decision:
 
 def decide(
     text: str,
-    question: ChoiceQuestion | ScoreQuestion,
+    question: ChoiceQuestion,
     *,
     threshold: float = 0.9,
     max_iters: int = 5,
@@ -34,7 +34,9 @@ def decide(
 ) -> Decision:
     """Classify and route. action == 'auto' only when calibrated confidence
     meets the threshold; anything uncalibrated or below it escalates with a
-    top-2 shortlist."""
+    top-2 shortlist. Only choice questions can be routed."""
+    if not isinstance(question, ChoiceQuestion):
+        raise ValueError("decide() only supports choice questions")
     result = classify(
         text,
         question,

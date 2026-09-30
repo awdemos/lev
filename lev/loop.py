@@ -124,7 +124,7 @@ def _classify_choice(
         prior = dist
     label = max(dist, key=dist.get)
     ranked = sorted(dist, key=dist.get, reverse=True)
-    margin = combined[ranked[0]] - combined[ranked[1]]
+    margin = combined[ranked[0]] - (combined[ranked[1]] if len(ranked) > 1 else 0.0)
     calibrated = calibration is not None
     return ChoiceResult(
         label=label,

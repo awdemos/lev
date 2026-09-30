@@ -60,3 +60,10 @@ def test_score_question_returns_int_in_range():
     assert 0 <= result.score <= 100
     assert isinstance(result.score, int)
     assert result.confidence > 0.3
+
+
+def test_single_label_choice_question_does_not_crash():
+    q = ChoiceQuestion(question="q?", labels={"billing": "invoices, payments, refunds"})
+    result = classify("please refund my invoice", q)
+    assert result.label == "billing"
+    assert result.margin == 6.0  # only label's combined score minus 0.0

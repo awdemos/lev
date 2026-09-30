@@ -44,3 +44,23 @@ def test_bad_questions_file_exits_nonzero(tmp_path):
     questions.write_text(json.dumps({"questions": [{"type": "rank"}]}))
     proc = _run(["classify", "hello", "--questions", str(questions)], cwd=".")
     assert proc.returncode == 1
+
+
+def test_cli_backend_onnx_missing_exits_nonzero(tmp_path, monkeypatch, capsys):
+    import lev.onnx_backend
+
+    def _boom():
+        raise RuntimeError("install lev[onnx] to use the onnx backend")
+
+    monkeypatch.setattr(lev.onnx_backend, "_load_model", _boom)
+    questions = tmp_path / "questions.json"
+    questions.write_text(json.dumps({
+        "questions": [{"type": "choice", "question": "q?",
+                       "labels": {"a": "words", "b": "other"}}]
+    }))
+    import lev.cli
+
+    rc = lev.cli.main(["classify", "hello", "--questions", str(questions),
+                       "--backend", "onnx"])
+    assert rc == 1
+    assert "lev: error:" in capsys.readouterr().err
