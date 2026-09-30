@@ -6,12 +6,29 @@ TOKEN_RE = re.compile(r"[a-z0-9]{2,}")
 STOPWORDS = frozenset({"a", "an", "the", "of", "to", "in", "for", "and", "or", "is", "it", "we", "were"})
 
 
+_OVERRIDES = {
+    "series": "series",
+    "movies": "movie",
+    "analyses": "analysis",
+    "status": "status",
+    "statuses": "status",
+}
+
+
 def _stem(tok: str) -> str:
+    if tok in _OVERRIDES:
+        return _OVERRIDES[tok]
     if tok.endswith(("ss", "us", "is")):
         return tok
-    if len(tok) > 4 and tok.endswith("ies") and not tok.endswith("eries"):
+    if len(tok) > 4 and tok.endswith("ies"):
         stem = tok[:-3] + "y"
-    elif len(tok) > 3 and tok.endswith("s") and not tok.endswith("ies"):
+    elif len(tok) > 4 and tok.endswith("es"):
+        stem = tok[:-2]
+        if stem.endswith("s"):
+            return tok
+    elif len(tok) > 5 and tok.endswith("ing"):
+        stem = tok[:-3]
+    elif len(tok) > 3 and tok.endswith("s"):
         stem = tok[:-1]
     elif len(tok) > 4 and tok.endswith("ed"):
         stem = tok[:-2]
@@ -42,7 +59,7 @@ def raw_choice_scores(state: Counter, labels: dict[str, str]) -> dict[str, float
     for label, criteria in labels.items():
         evidence = tokenize(f"{label} {criteria}")
         scores[label] = 3.0 * float(
-            sum(min(count, state[tok]) for tok, count in evidence.items())
+            sum(1 for tok in evidence if state[tok] > 0)
         )
     return scores
 

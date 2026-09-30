@@ -22,6 +22,8 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         payload = json.loads(Path(args.questions).read_text())
+        if not isinstance(payload, dict):
+            raise ValueError("questions file must contain a JSON object")
         questions = payload["questions"]
         if not isinstance(questions, list) or not all(
             isinstance(q, dict) for q in questions

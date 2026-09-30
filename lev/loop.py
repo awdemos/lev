@@ -1,3 +1,4 @@
+import math
 from collections import Counter
 
 from lev.engine import blend, confidence, raw_choice_scores, tokenize
@@ -68,14 +69,14 @@ def _classify_score(
     max_iters: int,
 ) -> ScoreResult:
     tokens = tokenize(state)
-    pos = sum(min(n, tokens[t]) for t, n in _POSITIVE.items())
-    neg = sum(min(n, tokens[t]) for t, n in _NEGATIVE.items())
+    pos = sum(tokens[t] for t in _POSITIVE)
+    neg = sum(tokens[t] for t in _NEGATIVE)
     total = pos + neg
     if total == 0:
         score, conf = 50, 0.1
     else:
-        score = round(50 + 50 * (pos - neg) / total)
-        conf = abs(pos - neg) / total
+        score = math.floor(50 + 50 * (pos - neg) / total + 0.5)
+        conf = (abs(pos - neg) / total) * min(1.0, total / 3.0)
     iterations = 1
     # The lexical score is a fixed point: the loop only counts how many
     # iterations an unconfirmable score spends failing to reach the
