@@ -19,7 +19,7 @@
         "Type Discipline": 96.0
       }
     },
-    "ai_generated_debt": 96.0,
+    "ai_generated_debt": 92.0,
     "api_surface_coherence": 88.0,
     "authorization_consistency": 100.0,
     "contract_coherence": 95.0,
@@ -29,8 +29,8 @@
     "design_coherence": 88.0,
     "error_consistency": 88.0,
     "high_level_elegance": 88.5,
-    "incomplete_migration": 100.0,
-    "initialization_coupling": 93.0,
+    "incomplete_migration": 99.0,
+    "initialization_coupling": 92.0,
     "logic_clarity": 94.0,
     "low_level_elegance": 90.0,
     "mid_level_elegance": 90.0,
@@ -206,29 +206,33 @@
     },
     "ai_generated_debt": {
       "evidence": [
-        "lev/engine.py: comment ratio across the package is ~0.008; the only substantial comment (lev/loop.py:81-83) explains WHY the score loop is a fixed-point simulation, which is non-obvious and earns its place",
-        "No entry/exit debug logging, no console object dumps anywhere; cli.py prints only the final results",
-        "No defensive overengineering: no null checks on typed values, no try/except around pure expressions; engine.py has zero try blocks and cli.py's try/except at lev/cli.py:23-38 is a genuine file-I/O/parse boundary",
-        "No docstring bloat: the codebase has no docstrings at all; functions like softmax and confidence (lev/engine.py:51-59) are self-explanatory and need none",
-        "No pass-through wrappers: tokenize, confidence, and raw_choice_scores all contain real logic (stemming, softmax normalization, evidence counting), not argument forwarding",
-        "Names are domain-specific (classify, question_from_dict, raw_choice_scores, blend); no handleData/processItem-style generics"
+        "lev/engine.py has zero comments and zero docstrings on most helpers (_stem, tokenize, softmax, confidence, raw_choice_scores, blend); the single docstring (urgency_score, line 78) is a one-line contract summary, not bloat.",
+        "The only inline comment in the package (lev/loop.py:64-66) explains WHY the score loop is a fixed point rather than restating what the code does \u2014 exactly the kind of comment the rubric preserves.",
+        "lev/loop.py:10-27 classify() docstring documents the ValueError contract (threshold range, max_iters, empty labels), which matches real validation logic at lines 21-37 \u2014 honest interface documentation, not boilerplate.",
+        "lev/router.py:10-14 docstring similarly documents genuine validation behavior (unknown type, missing/empty labels, fewer than two labels) implemented at lines 15-28.",
+        "No debug logging, no entry/exit print statements, no try-catch around pure expressions anywhere in lev/engine.py, lev/loop.py, lev/router.py, lev/cli.py.",
+        "Error handling is not copied boilerplate: cli.py catches (ValueError, OSError) at a real I/O boundary (line 37); loop.py and router.py raise distinct, specific ValueError messages rather than a shared verbatim handler.",
+        "Names are domain-honest: urgency_score, raw_choice_scores, question_from_dict, blend, tokenize \u2014 no handleData/processItem-style generics.",
+        "No pass-through wrappers: each function adds logic (stemming table, softmax normalization, confidence gating, dict validation).",
+        "_stem in lev/engine.py:19-38 is a compact table/branch-driven stemmer; mildly clever (the 'es' double-s guard at line 28-29) but self-contained and readable, not defensive overengineering."
       ],
       "impact_scope": "codebase",
       "fix_scope": "single_edit",
       "confidence": "high",
-      "issues_preventing_higher_score": "Nothing observed preventing a near-perfect score; the only residual noise is the unused `Counter` import in lev/loop.py (reported under its proper dimension, not AI-debt) and the deliberately simulation-look loop in _classify_score whose long explanatory comment hints the construct itself may be over-clever."
+      "issues_preventing_higher_score": "Residual nit: the classify() and question_from_dict() docstrings enumerate every raised error condition, which edges toward exhaustive contract restatement; and _stem's conditional chain is slightly denser than a lookup table would be. Neither materially impedes a new reader."
     },
     "incomplete_migration": {
       "evidence": [
-        "Grep over lev/, tests/, pyproject.toml, README.md for 'deprecat|legacy|todo|fixme|migrat|old api|remove after|shim|compat' returned zero matches.",
-        "Single API style throughout: uniform modern Python (dataclasses, PEP 604 unions like 'ChoiceQuestion | ScoreQuestion', built-in generics like 'list[str]'), no old/new pattern coexistence.",
-        "No compatibility shims, no deprecated-but-called symbols, no dual-path entry points; public surface in lev/__init__.py re-exports the current API only.",
-        "No mixed-language or mixed-paradigm modules; each module has one clear, current pattern (engine=scoring, loop=classification, router=question parsing)."
+        "Grep over lev/ production code and tests for 'deprecat|legacy|todo|fixme|migrat|old api|remove after|shim|compat' returned zero matches.",
+        "After the refactor, score lexicons (_POSITIVE/_NEGATIVE) and urgency_score() live solely in lev/engine.py; lev/loop.py:8 imports urgency_score from lev.engine and no test imports it from the old location, so no dual-path API remains.",
+        "Stemmer in engine.py is table-driven via a single _OVERRIDES dict with no superseded helper kept alongside it; no deprecated-but-called symbols anywhere.",
+        "Public surface in lev/__init__.py re-exports only current symbols (classify, question_from_dict, typed result dataclasses); no compat aliases.",
+        "All cross-module imports (loop.py, engine.py, router.py, cli.py, and all 5 test files) resolve to the same current locations, confirming the refactor was completed rather than half-done."
       ],
       "impact_scope": "codebase",
       "fix_scope": "single_edit",
       "confidence": "high",
-      "issues_preventing_higher_score": ""
+      "issues_preventing_higher_score": "No defects found; score is capped below 100 only because absolute certainty of no migration residue in a small codebase is never fully provable, though every signal checked is clean."
     },
     "package_organization": {
       "evidence": [
@@ -246,15 +250,17 @@
     },
     "initialization_coupling": {
       "evidence": [
-        "No import-time side effects anywhere: no DB connections, file I/O, network calls, or os.environ reads at module scope in lev/*.py",
-        "lev/loop.py:11-19 computes _POSITIVE/_NEGITIVE lexicons at import time via tokenize(), but tokenize() is a pure in-memory function (regex + Counter), so import order and timing never affect the result",
-        "Import graph is strictly acyclic and shallow: cli -> {loop, router}; loop -> {engine, types}; engine -> types; __init__ -> {loop, router, types}; no conditional or lazy imports hiding cycles",
-        "No global mutable singletons; module-level state is limited to immutable-ish compiled constants (TOKEN_RE, STOPWORDS frozenset, _OVERRIDES dict, _RULES tuple) and the two frozen lexicon Counters that are never mutated after import"
+        "Import graph is a clean acyclic DAG: __init__.py -> {loop, router, types}; loop.py -> {engine, types}; cli.py -> {loop, router}. No circular or lazy/conditional imports anywhere.",
+        "No module-level I/O, network calls, DB connections, or environment variable reads; cli.py performs file reads only inside main() at runtime (lev/cli.py:25).",
+        "Only import-time computation is _POSITIVE/_NEGATIVE lexicons in lev/engine.py:47-55, produced by calling the pure tokenize() on hardcoded string literals. Deterministic, cheap, no external state, so ordering fragility is minimal.",
+        "No global singletons or mutable module-level registries; module-level names in engine.py (TOKEN_RE, STOPWORDS, EVIDENCE_WEIGHT, _OVERRIDES, _POSITIVE, _NEGATIVE) are immutable (frozenset, compiled regex, dicts only read via table lookup in _stem).",
+        "types.py holds only frozen dataclasses and plain string constants; ScoreQuestion defaults reference module constants directly, which is safe because the constants are never mutated.",
+        "The refactored urgency_score() (lev/engine.py:77) and table-driven _stem (lev/engine.py:19-38) are pure functions of their inputs; loop.py holds no state between calls."
       ],
-      "impact_scope": "codebase",
+      "impact_scope": "module",
       "fix_scope": "single_edit",
       "confidence": "high",
-      "issues_preventing_higher_score": "Import-time lexicon snapshot in loop.py couples module behavior to engine.tokenize at import; if tokenize's stemming rules ever change at runtime (they cannot today, but the pattern invites future drift), the snapshot would be stale. Also the _OVERRIDES/_RULES dicts are mutable module globals, albeit unmutated."
+      "issues_preventing_higher_score": "engine.py computes _POSITIVE/_NEGATIVE via tokenize() at import time; harmless today but the only place where import order or a future tokenize() change could silently produce stale lexicon snapshots."
     },
     "design_coherence": {
       "evidence": [
@@ -360,20 +366,20 @@
       "score_rationale": "With zero protected resources and a single, uniformly validated input boundary, auth patterns are trivially consistent \u2014 there is nothing to apply them to. Matching the global anchor for exemplary (100): a developer can trust that no hidden auth concerns exist here. Zero findings is the correct outcome rather than a manufactured one."
     },
     "ai_generated_debt": {
-      "dimension_character": "This is a purpose-driven, ceremony-free codebase: 282 LOC of direct logic with essentially no comments, no logging noise, no defensive sprawl, and no boilerplate error handling. The single non-trivial comment in loop.py explains a genuinely non-obvious fixed-point simulation, which is exactly what comments should do.",
-      "score_rationale": "Against the ai_generated_debt anchors (100 = purpose-driven with no ceremony; 90 = mostly clean with small pockets of boilerplate), this code sits at the exemplary end: there is no restating commentary, no nosy logging, no copied boilerplate, and the one import-then-unused-list pattern is absent. The score is held marginally below 100 by the awkward _classify_score while-loop (lev/loop.py:80-85), whose no-op iteration counting needs a three-line comment to justify \u2014 a faint over-clever smell \u2014 and the unused Counter import in loop.py."
+      "dimension_character": "This is a small, hand-written package with essentially no LLM-hallmark noise: no restating comments, no nosy logging, no defensive null-check theater, no pass-through wrappers, and no generic names. The few docstrings that exist document real validation contracts, and the single inline comment explains a non-obvious fixed-point design decision.",
+      "score_rationale": "Against the global anchors of a codebase free of generated-debt smells scoring in the low-to-mid 90s, this package sits comfortably there: every rubric 'look for' pattern was checked for and found absent, and the 'skip' patterns (WHY comments, genuine API-boundary validation) are what remains. Held back from the high 90s only by minor contract-docstring verbosity in loop.py/router.py and mild density in _stem."
     },
     "incomplete_migration": {
-      "dimension_character": "This is a small, greenfield-style codebase (6 production files, ~282 LOC) with a single, coherent API style and no evidence of any abandoned or in-flight migration. There are no deprecated symbols, no old/new pattern coexistence, no compat shims, and no stale migration TODOs anywhere in production code, tests, or docs.",
-      "score_rationale": "The rubric's 100 anchor \u2014 migrations complete or intentionally bounded \u2014 matches what is observable: one modern Python idiom set (frozen dataclasses, PEP 604 unions, built-in generics) applied uniformly, and a mechanical scan confirming zero migration markers. With no residue to confuse a developer about which pattern to follow, nothing pulls the score below the exemplary anchor."
+      "dimension_character": "This is a small, coherent Python package (6 production files, ~295 LOC) with a single modern API style (typed dataclasses, PEP 604 unions, built-in generics) and no evidence of abandoned or in-flight migrations. The recent refactor that moved score lexicons from loop.py to engine.py was completed: no old-location imports, no compat shims, no deprecated symbols, and no stale migration TODOs exist anywhere in production code or tests.",
+      "score_rationale": "Every rubric signal for this dimension is absent: no old+new pattern coexistence, no deprecated-but-called symbols, no unused compatibility shims, and no stale migration markers. Global anchors for a top-band score (consistent single idiom set, honest import graph, no shim layers) are fully met, so the dimension scores near the top of the scale."
     },
     "package_organization": {
       "dimension_character": "This is a tiny, single-package project (6 production files, 282 LOC) whose flat lev/ layout is the appropriate structure at this scale, and every file's placement matches its ownership: types are centralized, engine is pure primitives, loop orchestrates, router parses, cli drives. Dependency direction is strictly one-way with no cycles, stragglers, or ambiguous folder names, so a developer can navigate entirely by directory names. The only friction is loop.py's high re-export ratio, which gives it a mild facade profile and slightly blurs the engine/loop boundary.",
       "score_rationale": "Anchored at 90 = 'mostly coherent with minor placement outliers': the structure is essentially exemplary for a project this size \u2014 no thresholded defect (straggler roots, >60% import-affinity mismatch, overloaded >10-file directories, coupling-direction failures) is present. The score sits slightly above the 90 anchor because the single rough edge (loop.py's re-export surface) is cosmetic and navigational rather than a true ownership mismatch, keeping the layout at strong/exemplary rather than merely solid."
     },
     "initialization_coupling": {
-      "dimension_character": "This is a small, purely computational package with essentially zero initialization surface: no environment reads, no I/O, no singleton registries, and a strict acyclic import DAG (cli -> loop -> engine -> types). The only import-time work is building two token Counters from a pure function in loop.py, which is deterministic and side-effect-free. A developer can import any module in any order without boot-order concerns.",
-      "score_rationale": "Per the anchors, 90 = mostly stable with limited boot-order fragility, 100 = import any module with no worries at all. The codebase sits near the top: every module-level computation is pure and order-independent, so nothing creates real fragility. The small deduction reflects the module-level lexicon snapshot pattern (_POSITIVE/_NEGATIVE computed once at import from engine.tokenize) and the handful of mutable module-global dicts (_OVERRIDES), which are safe today but are the only seeds of the stale-snapshot class of problem this dimension guards against."
+      "dimension_character": "Initialization coupling is exceptionally low for a codebase this size: the import graph is a strict DAG with no import-time side effects beyond two pure, deterministic lexicon computations in engine.py, and all shared state is immutable module constants or frozen dataclasses. There are no singletons, no env reads at import, and no hidden lazy imports. The only mild coupling is that the urgency lexicons are baked as import-time snapshots of tokenize(), tying them to the current stemmer behavior.",
+      "score_rationale": "Against the rubric anchors for initialization coupling, this codebase shows none of the graded failure modes (boot-order dependencies, I/O at import, order-sensitive singletons, stale-snapshot-vs-getter bugs in practice). The single import-time computation is pure and low-risk, which keeps the score just short of perfect rather than dragging it into defect territory."
     },
     "design_coherence": {
       "dimension_character": "A tiny, tightly-designed package where every function has a single earned responsibility: engine.py holds pure scoring primitives, loop.py holds the deliberation dispatch, router.py validates input shapes, and cli.py orchestrates. Structural patterns (frozen dataclasses, throw-on-invalid, dispatcher-to-private-helper) are applied uniformly. The one structural oddity is _classify_score mimicking the choice loop's while-shape without doing any iterative work, plus a stray unused import.",
@@ -676,6 +682,23 @@
       "fix_scope": "single_edit"
     },
     {
+      "dimension": "ai_generated_debt",
+      "identifier": "docstring_condition_enumeration",
+      "summary": "Docstrings enumerate every error condition, edging toward contract restatement",
+      "confidence": "medium",
+      "suggestion": "Trim to intent ('validates threshold, max_iters, and non-empty labels') or rely on the explicit ValueError messages; the code already speaks.",
+      "related_files": [
+        "lev/loop.py",
+        "lev/router.py"
+      ],
+      "evidence": [
+        "lev/loop.py:16-20 docstring lists all three ValueError conditions verbatim from the body below it",
+        "lev/router.py:10-14 docstring lists the same style of exhaustive raise-condition enumeration"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    },
+    {
       "dimension": "package_organization",
       "identifier": "loop_py_facade_like_reexports",
       "summary": "loop.py re-exports ~10 symbols (Counter, engine helpers, all four types), blurring its orchestration role vs engine.py",
@@ -687,6 +710,22 @@
       "evidence": [
         "lev/loop.py imports math, collections.Counter, blend/confidence/raw_choice_scores/tokenize from lev.engine, and all four dataclasses from lev.types, then defines only classify() itself \u2014 a 91% re-export ratio per structure signals",
         "lev/loop.py:2 imports Counter but never uses it (confirmed unused-import signal), a symptom of the file acting as an accidental re-export hub"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "initialization_coupling",
+      "identifier": "import_time_lexicon_snapshot",
+      "summary": "_POSITIVE/_NEGATIVE lexicons are computed at import time via tokenize(), coupling lexicon content to import order and current stemmer behavior.",
+      "confidence": "medium",
+      "suggestion": "Either inline the already-tokenized lexicons as literals, or compute them in a lazily-initialized private helper (e.g. functools.lru_cache-backed _lexicons()) so lexicon construction is explicit and order-independent.",
+      "related_files": [
+        "lev/engine.py"
+      ],
+      "evidence": [
+        "lev/engine.py:47-55: _POSITIVE = tokenize(...); _NEGATIVE = tokenize(...) run at module import; a future change to tokenize() or _stem would silently change lexicons with no test-visible seam.",
+        "lev/engine.py:79-80: urgency_score() reads the snapshot tokens; consumers cannot regenerate lexicons without re-importing."
       ],
       "impact_scope": "module",
       "fix_scope": "single_edit"
@@ -774,8 +813,8 @@
   "review_quality": {
     "batch_count": 20,
     "dimension_coverage": 0.05,
-    "evidence_density": 4.092,
-    "high_score_missing_issue_note": 2
+    "evidence_density": 4.392,
+    "high_score_missing_issue_note": 1
   },
   "context_updates": {
     "cross_module_architecture": {
@@ -1021,20 +1060,14 @@
     "ai_generated_debt": {
       "add": [
         {
-          "header": "Comment-free, purpose-driven style",
-          "description": "The package carries an ~0.008 comment ratio with zero docstrings, and the code reads cleanly without them because names are domain-specific and functions are short. Comments are reserved for non-obvious WHY, as in the fixed-point explanation at lev/loop.py:81-83.",
+          "header": "Minimal-comment style with contract-only docstrings",
+          "description": "The lev package keeps helpers comment-free and reserves docstrings for public entry points (classify, question_from_dict, urgency_score) where they document real validation contracts. This appears deliberate: the code is short enough that narrative comments would restate it.",
           "settled": true,
           "positive": true
         },
         {
-          "header": "No boilerplate error handling",
-          "description": "Error handling is throw-based at real boundaries (cli.py wraps file read/JSON parse; router.py validates untyped dict input) with no copied try/except templates across files. Defensive checks appear only where input is genuinely untrusted.",
-          "settled": true,
-          "positive": true
-        },
-        {
-          "header": "Small helpers contain real logic",
-          "description": "tokenize, softmax, confidence, and raw_choice_scores in engine.py each do substantive work (stemming, normalization, evidence scoring); none are LLM-style argument-forwarding wrappers, so the codebase has no wrapper noise to filter.",
+          "header": "Fixed-point comment in loop.py explains real constraint",
+          "description": "The inline comment at loop.py:64-66 clarifies why the score path skips iteration math \u2014 the lexical score cannot change \u2014 which is non-obvious from the code alone. It is a WHY comment, not noise.",
           "settled": true,
           "positive": true
         }
@@ -1043,8 +1076,8 @@
     "incomplete_migration": {
       "add": [
         {
-          "header": "Single uniform API style, no migration residue",
-          "description": "All 6 production modules use one modern Python idiom set (frozen dataclasses, PEP 604 unions, built-in generics) with no deprecated symbols, shims, or old/new pattern pairs. The codebase appears to have been written current from the start, so a developer never faces dual-path confusion.",
+          "header": "Refactor of lexicons to engine.py fully landed",
+          "description": "The score lexicons and urgency_score() now exist only in lev/engine.py, and all production and test imports point to the new location. There is no leftover old-path access, so the migration is complete rather than straddling two homes.",
           "settled": true,
           "positive": true
         }
@@ -1075,15 +1108,15 @@
     "initialization_coupling": {
       "add": [
         {
-          "header": "Import-time lexicon snapshot in loop.py",
-          "description": "_POSITIVE/_NEGATIVE are computed once at import by calling engine.tokenize(); since tokenize is pure and the stemming rules are static, the snapshot is deterministic and safe. It is the only import-time computation in the package and would be the first place to look if tokenize ever became configurable at runtime.",
+          "header": "Import graph is a strict DAG",
+          "description": "lev's modules import one direction only (cli -> loop -> engine/types), so there is no hidden init ordering or circular import risk; any import works standalone.",
           "settled": true,
-          "positive": false
+          "positive": true
         },
         {
-          "header": "Pure module-level state only",
-          "description": "All module-scope state (TOKEN_RE, STOPWORDS, _OVERRIDES, _RULES, lexicon Counters) is computed from literals via pure functions at import; there are no env reads, I/O, or network calls at module scope anywhere in the package, so imports are order-independent and test-friendly.",
-          "settled": true,
+          "header": "Only side effects are pure lexicon builds",
+          "description": "The sole import-time work in the package is tokenizing two hardcoded word lists in engine.py; it is deterministic, cheap, and touches no external state, so it does not create real initialization coupling.",
+          "settled": false,
           "positive": true
         }
       ]
@@ -1204,7 +1237,7 @@
     "blind": true,
     "runner": "dry-run",
     "run_stamp": "20260930_171646",
-    "created_at": "2026-09-30T17:22:13+00:00",
+    "created_at": "2026-09-30T17:29:44+00:00",
     "batch_count": 20,
     "batch_indexes": [
       1,

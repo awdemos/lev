@@ -1,31 +1,30 @@
 {
   "batch": "incomplete_migration",
   "batch_index": 14,
-  "assessments": {
-    "incomplete_migration": 100.0
-  },
+  "assessments": {"incomplete_migration": 99.0},
   "dimension_notes": {
     "incomplete_migration": {
       "evidence": [
-        "Grep over lev/, tests/, pyproject.toml, README.md for 'deprecat|legacy|todo|fixme|migrat|old api|remove after|shim|compat' returned zero matches.",
-        "Single API style throughout: uniform modern Python (dataclasses, PEP 604 unions like 'ChoiceQuestion | ScoreQuestion', built-in generics like 'list[str]'), no old/new pattern coexistence.",
-        "No compatibility shims, no deprecated-but-called symbols, no dual-path entry points; public surface in lev/__init__.py re-exports the current API only.",
-        "No mixed-language or mixed-paradigm modules; each module has one clear, current pattern (engine=scoring, loop=classification, router=question parsing)."
+        "Grep over lev/ production code and tests for 'deprecat|legacy|todo|fixme|migrat|old api|remove after|shim|compat' returned zero matches.",
+        "After the refactor, score lexicons (_POSITIVE/_NEGATIVE) and urgency_score() live solely in lev/engine.py; lev/loop.py:8 imports urgency_score from lev.engine and no test imports it from the old location, so no dual-path API remains.",
+        "Stemmer in engine.py is table-driven via a single _OVERRIDES dict with no superseded helper kept alongside it; no deprecated-but-called symbols anywhere.",
+        "Public surface in lev/__init__.py re-exports only current symbols (classify, question_from_dict, typed result dataclasses); no compat aliases.",
+        "All cross-module imports (loop.py, engine.py, router.py, cli.py, and all 5 test files) resolve to the same current locations, confirming the refactor was completed rather than half-done."
       ],
       "impact_scope": "codebase",
       "fix_scope": "single_edit",
-      "confidence": "high"
+      "confidence": "high",
+      "issues_preventing_higher_score": "No defects found; score is capped below 100 only because absolute certainty of no migration residue in a small codebase is never fully provable, though every signal checked is clean."
     }
   },
   "dimension_judgment": {
     "incomplete_migration": {
-      "dimension_character": "This is a small, greenfield-style codebase (6 production files, ~282 LOC) with a single, coherent API style and no evidence of any abandoned or in-flight migration. There are no deprecated symbols, no old/new pattern coexistence, no compat shims, and no stale migration TODOs anywhere in production code, tests, or docs.",
-      "score_rationale": "The rubric's 100 anchor — migrations complete or intentionally bounded — matches what is observable: one modern Python idiom set (frozen dataclasses, PEP 604 unions, built-in generics) applied uniformly, and a mechanical scan confirming zero migration markers. With no residue to confuse a developer about which pattern to follow, nothing pulls the score below the exemplary anchor."
+      "dimension_character": "This is a small, coherent Python package (6 production files, ~295 LOC) with a single modern API style (typed dataclasses, PEP 604 unions, built-in generics) and no evidence of abandoned or in-flight migrations. The recent refactor that moved score lexicons from loop.py to engine.py was completed: no old-location imports, no compat shims, no deprecated symbols, and no stale migration TODOs exist anywhere in production code or tests.",
+      "score_rationale": "Every rubric signal for this dimension is absent: no old+new pattern coexistence, no deprecated-but-called symbols, no unused compatibility shims, and no stale migration markers. Global anchors for a top-band score (consistent single idiom set, honest import graph, no shim layers) are fully met, so the dimension scores near the top of the scale."
     }
   },
   "issues": [],
   "retrospective": {
-    "root_causes": [],
     "likely_symptoms": [],
     "possible_false_positives": []
   },
@@ -33,8 +32,8 @@
     "incomplete_migration": {
       "add": [
         {
-          "header": "Single uniform API style, no migration residue",
-          "description": "All 6 production modules use one modern Python idiom set (frozen dataclasses, PEP 604 unions, built-in generics) with no deprecated symbols, shims, or old/new pattern pairs. The codebase appears to have been written current from the start, so a developer never faces dual-path confusion.",
+          "header": "Refactor of lexicons to engine.py fully landed",
+          "description": "The score lexicons and urgency_score() now exist only in lev/engine.py, and all production and test imports point to the new location. There is no leftover old-path access, so the migration is complete rather than straddling two homes.",
           "settled": true,
           "positive": true
         }

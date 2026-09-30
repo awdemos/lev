@@ -1,6 +1,7 @@
 import math
 import re
 from collections import Counter
+from functools import lru_cache
 
 TOKEN_RE = re.compile(r"[a-z0-9]{2,}")
 STOPWORDS = frozenset({"a", "an", "the", "of", "to", "in", "for", "and", "or", "is", "it", "we", "were"})
@@ -44,15 +45,22 @@ def tokenize(text: str) -> Counter[str]:
     )
 
 
-_POSITIVE = tokenize(
+_POSITIVE_WORDS = (
     "urgent immediately critical asap emergency severe serious important "
     "deadline broken outage down fail failure angry furious terrible awful "
     "love excellent great amazing wonderful happy pleased perfect brilliant"
 )
-_NEGATIVE = tokenize(
+_NEGATIVE_WORDS = (
     "later maybe eventually casual minor cosmetic nice fine okay tolerable "
     "someday whenever slow mild slight meh bad poor useless"
 )
+
+
+@lru_cache(maxsize=1)
+def _lexicons() -> tuple[frozenset[str], frozenset[str]]:
+    """Stemmed urgency lexicons, built lazily so tokenize()/_stem changes
+    always take effect at call time rather than being snapshotted at import."""
+    return frozenset(tokenize(_POSITIVE_WORDS)), frozenset(tokenize(_NEGATIVE_WORDS))
 
 
 def softmax(scores: dict[str, float]) -> dict[str, float]:
@@ -76,8 +84,9 @@ def raw_choice_scores(tokens: Counter[str], labels: dict[str, str]) -> dict[str,
 
 def urgency_score(tokens: Counter[str]) -> tuple[int, float]:
     """Map token counts to an urgency score (0-100) and confidence."""
-    pos = sum(tokens[t] for t in _POSITIVE)
-    neg = sum(tokens[t] for t in _NEGATIVE)
+    pos_words, neg_words = _lexicons()
+    pos = sum(tokens[t] for t in pos_words)
+    neg = sum(tokens[t] for t in neg_words)
     total = pos + neg
     if total == 0:
         return 50, 0.1

@@ -2,49 +2,66 @@
   "batch": "ai_generated_debt",
   "batch_index": 13,
   "assessments": {
-    "ai_generated_debt": 96.0
+    "ai_generated_debt": 92.0
   },
   "dimension_notes": {
     "ai_generated_debt": {
       "evidence": [
-        "lev/engine.py: comment ratio across the package is ~0.008; the only substantial comment (lev/loop.py:81-83) explains WHY the score loop is a fixed-point simulation, which is non-obvious and earns its place",
-        "No entry/exit debug logging, no console object dumps anywhere; cli.py prints only the final results",
-        "No defensive overengineering: no null checks on typed values, no try/except around pure expressions; engine.py has zero try blocks and cli.py's try/except at lev/cli.py:23-38 is a genuine file-I/O/parse boundary",
-        "No docstring bloat: the codebase has no docstrings at all; functions like softmax and confidence (lev/engine.py:51-59) are self-explanatory and need none",
-        "No pass-through wrappers: tokenize, confidence, and raw_choice_scores all contain real logic (stemming, softmax normalization, evidence counting), not argument forwarding",
-        "Names are domain-specific (classify, question_from_dict, raw_choice_scores, blend); no handleData/processItem-style generics"
+        "lev/engine.py has zero comments and zero docstrings on most helpers (_stem, tokenize, softmax, confidence, raw_choice_scores, blend); the single docstring (urgency_score, line 78) is a one-line contract summary, not bloat.",
+        "The only inline comment in the package (lev/loop.py:64-66) explains WHY the score loop is a fixed point rather than restating what the code does — exactly the kind of comment the rubric preserves.",
+        "lev/loop.py:10-27 classify() docstring documents the ValueError contract (threshold range, max_iters, empty labels), which matches real validation logic at lines 21-37 — honest interface documentation, not boilerplate.",
+        "lev/router.py:10-14 docstring similarly documents genuine validation behavior (unknown type, missing/empty labels, fewer than two labels) implemented at lines 15-28.",
+        "No debug logging, no entry/exit print statements, no try-catch around pure expressions anywhere in lev/engine.py, lev/loop.py, lev/router.py, lev/cli.py.",
+        "Error handling is not copied boilerplate: cli.py catches (ValueError, OSError) at a real I/O boundary (line 37); loop.py and router.py raise distinct, specific ValueError messages rather than a shared verbatim handler.",
+        "Names are domain-honest: urgency_score, raw_choice_scores, question_from_dict, blend, tokenize — no handleData/processItem-style generics.",
+        "No pass-through wrappers: each function adds logic (stemming table, softmax normalization, confidence gating, dict validation).",
+        "_stem in lev/engine.py:19-38 is a compact table/branch-driven stemmer; mildly clever (the 'es' double-s guard at line 28-29) but self-contained and readable, not defensive overengineering."
       ],
       "impact_scope": "codebase",
       "fix_scope": "single_edit",
       "confidence": "high",
-      "issues_preventing_higher_score": "Nothing observed preventing a near-perfect score; the only residual noise is the unused `Counter` import in lev/loop.py (reported under its proper dimension, not AI-debt) and the deliberately simulation-look loop in _classify_score whose long explanatory comment hints the construct itself may be over-clever."
+      "issues_preventing_higher_score": "Residual nit: the classify() and question_from_dict() docstrings enumerate every raised error condition, which edges toward exhaustive contract restatement; and _stem's conditional chain is slightly denser than a lookup table would be. Neither materially impedes a new reader."
     }
   },
   "dimension_judgment": {
     "ai_generated_debt": {
-      "dimension_character": "This is a purpose-driven, ceremony-free codebase: 282 LOC of direct logic with essentially no comments, no logging noise, no defensive sprawl, and no boilerplate error handling. The single non-trivial comment in loop.py explains a genuinely non-obvious fixed-point simulation, which is exactly what comments should do.",
-      "score_rationale": "Against the ai_generated_debt anchors (100 = purpose-driven with no ceremony; 90 = mostly clean with small pockets of boilerplate), this code sits at the exemplary end: there is no restating commentary, no nosy logging, no copied boilerplate, and the one import-then-unused-list pattern is absent. The score is held marginally below 100 by the awkward _classify_score while-loop (lev/loop.py:80-85), whose no-op iteration counting needs a three-line comment to justify — a faint over-clever smell — and the unused Counter import in loop.py."
+      "dimension_character": "This is a small, hand-written package with essentially no LLM-hallmark noise: no restating comments, no nosy logging, no defensive null-check theater, no pass-through wrappers, and no generic names. The few docstrings that exist document real validation contracts, and the single inline comment explains a non-obvious fixed-point design decision.",
+      "score_rationale": "Against the global anchors of a codebase free of generated-debt smells scoring in the low-to-mid 90s, this package sits comfortably there: every rubric 'look for' pattern was checked for and found absent, and the 'skip' patterns (WHY comments, genuine API-boundary validation) are what remains. Held back from the high 90s only by minor contract-docstring verbosity in loop.py/router.py and mild density in _stem."
     }
   },
-  "issues": [],
+  "issues": [
+    {
+      "dimension": "ai_generated_debt",
+      "identifier": "docstring_condition_enumeration",
+      "summary": "Docstrings enumerate every error condition, edging toward contract restatement",
+      "related_files": ["lev/loop.py", "lev/router.py"],
+      "evidence": [
+        "lev/loop.py:16-20 docstring lists all three ValueError conditions verbatim from the body below it",
+        "lev/router.py:10-14 docstring lists the same style of exhaustive raise-condition enumeration"
+      ],
+      "suggestion": "Trim to intent ('validates threshold, max_iters, and non-empty labels') or rely on the explicit ValueError messages; the code already speaks.",
+      "confidence": "medium",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  },
   "context_updates": {
     "ai_generated_debt": {
       "add": [
         {
-          "header": "Comment-free, purpose-driven style",
-          "description": "The package carries an ~0.008 comment ratio with zero docstrings, and the code reads cleanly without them because names are domain-specific and functions are short. Comments are reserved for non-obvious WHY, as in the fixed-point explanation at lev/loop.py:81-83.",
+          "header": "Minimal-comment style with contract-only docstrings",
+          "description": "The lev package keeps helpers comment-free and reserves docstrings for public entry points (classify, question_from_dict, urgency_score) where they document real validation contracts. This appears deliberate: the code is short enough that narrative comments would restate it.",
           "settled": true,
           "positive": true
         },
         {
-          "header": "No boilerplate error handling",
-          "description": "Error handling is throw-based at real boundaries (cli.py wraps file read/JSON parse; router.py validates untyped dict input) with no copied try/except templates across files. Defensive checks appear only where input is genuinely untrusted.",
-          "settled": true,
-          "positive": true
-        },
-        {
-          "header": "Small helpers contain real logic",
-          "description": "tokenize, softmax, confidence, and raw_choice_scores in engine.py each do substantive work (stemming, normalization, evidence scoring); none are LLM-style argument-forwarding wrappers, so the codebase has no wrapper noise to filter.",
+          "header": "Fixed-point comment in loop.py explains real constraint",
+          "description": "The inline comment at loop.py:64-66 clarifies why the score path skips iteration math — the lexical score cannot change — which is non-obvious from the code alone. It is a WHY comment, not noise.",
           "settled": true,
           "positive": true
         }
