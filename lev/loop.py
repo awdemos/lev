@@ -25,24 +25,65 @@ DEFAULT_SIGNALS: tuple[Signal, ...] = (
     NegationSignal(),
 )
 
+_ONNX_CHAIN: tuple[Signal, ...] | None = None
+_ONNX_PROBE: bool | None = None
+
+
+def _onnx_chain() -> tuple[Signal, ...]:
+    """ONNX backend: one embedding signal replaces signals 1-3; the
+    negation pass still applies."""
+    global _ONNX_CHAIN
+    if _ONNX_CHAIN is None:
+        from lev.onnx_backend import OnnxEmbeddingSignal
+        from lev.signals import NegationSignal
+
+        _ONNX_CHAIN = (OnnxEmbeddingSignal(), NegationSignal())
+    return _ONNX_CHAIN
+
+
+def _onnx_available() -> bool:
+    """True if the extras are installed and the model can be loaded."""
+    global _ONNX_PROBE
+    if _ONNX_PROBE is None:
+        try:
+            _onnx_chain()[0].score("", {}, ChoiceQuestion(question="", labels={"a": "b"}))
+            _ONNX_PROBE = True
+        except Exception:
+            _ONNX_PROBE = False
+    return _ONNX_PROBE
+
 
 def classify(
     text: str,
     question: ChoiceQuestion | ScoreQuestion,
     threshold: float = 0.9,
     max_iters: int = 5,
-    signals: tuple[Signal, ...] = DEFAULT_SIGNALS,
+    signals: tuple[Signal, ...] | None = None,
     calibration: Calibration | None = None,
+    backend: str | None = None,
 ) -> ChoiceResult | ScoreResult:
     """Classify text against a typed question via a confidence-gated loop.
 
-    Raises ValueError if threshold is not in [0, 1], max_iters < 1, or a
-    choice question has empty labels.
+    Raises ValueError if threshold is not in [0, 1], max_iters < 1, a
+    choice question has empty labels, backend is not heuristic/onnx/auto,
+    or both signals and backend are passed.
     """
     if not 0 <= threshold <= 1:
         raise ValueError("threshold must be between 0 and 1")
     if max_iters < 1:
         raise ValueError("max_iters must be >= 1")
+    if signals is not None and backend is not None:
+        raise ValueError("signals and backend are mutually exclusive")
+    if signals is None:
+        backend = backend or "heuristic"
+        if backend == "heuristic":
+            signals = DEFAULT_SIGNALS
+        elif backend == "onnx":
+            signals = _onnx_chain()
+        elif backend == "auto":
+            signals = _onnx_chain() if _onnx_available() else DEFAULT_SIGNALS
+        else:
+            raise ValueError(f"unknown backend: {backend!r}")
     if isinstance(question, ChoiceQuestion):
         return _classify_choice(text, question, threshold, max_iters, signals, calibration)
     return _classify_score(text, question, threshold, max_iters)

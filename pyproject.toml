@@ -7,6 +7,9 @@ requires-python = ">=3.10"
 [project.scripts]
 lev = "lev.cli:main"
 
+[project.optional-dependencies]
+onnx = ["onnxruntime>=1.17", "huggingface_hub>=0.23", "tokenizers>=0.19"]
+
 [dependency-groups]
 dev = ["pytest>=8"]
 
