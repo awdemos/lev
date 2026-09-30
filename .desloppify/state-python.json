@@ -1,28 +1,28 @@
 {
   "version": 3,
   "created": "2026-09-30T17:15:00+00:00",
-  "last_scan": "2026-09-30T17:22:13+00:00",
-  "scan_count": 2,
-  "overall_score": 92.8,
-  "objective_score": 98.4,
+  "last_scan": "2026-09-30T17:27:15+00:00",
+  "scan_count": 3,
+  "overall_score": 93.0,
+  "objective_score": 99.4,
   "strict_score": 92.8,
-  "verified_strict_score": 98.4,
+  "verified_strict_score": 99.4,
   "stats": {
     "total": 48,
-    "auto_resolved": 0,
+    "auto_resolved": 1,
     "deferred": 0,
     "false_positive": 0,
-    "fixed": 20,
-    "open": 28,
+    "fixed": 42,
+    "open": 3,
     "triaged_out": 0,
-    "wontfix": 0,
+    "wontfix": 2,
     "by_tier": {
       "1": {
-        "auto_resolved": 0,
+        "auto_resolved": 1,
         "deferred": 0,
         "false_positive": 0,
-        "fixed": 0,
-        "open": 8,
+        "fixed": 6,
+        "open": 1,
         "triaged_out": 0,
         "wontfix": 0
       },
@@ -30,8 +30,8 @@
         "auto_resolved": 0,
         "deferred": 0,
         "false_positive": 0,
-        "fixed": 0,
-        "open": 11,
+        "fixed": 11,
+        "open": 0,
         "triaged_out": 0,
         "wontfix": 0
       },
@@ -39,10 +39,10 @@
         "auto_resolved": 0,
         "deferred": 0,
         "false_positive": 0,
-        "fixed": 0,
-        "open": 9,
+        "fixed": 5,
+        "open": 2,
         "triaged_out": 0,
-        "wontfix": 0
+        "wontfix": 2
       },
       "4": {
         "auto_resolved": 0,
@@ -67,11 +67,11 @@
         "line": 2,
         "category": "imports"
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "Auto-resolved: absent from latest detector output",
       "first_seen": "2026-09-30T17:15:00+00:00",
       "last_seen": "2026-09-30T17:15:00+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:27:15+00:00",
       "reopen_count": 0,
       "work_item_kind": "mechanical_defect",
       "issue_kind": "mechanical_defect",
@@ -96,7 +96,7 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-09-30T17:15:00+00:00",
-      "last_seen": "2026-09-30T17:15:00+00:00",
+      "last_seen": "2026-09-30T17:27:15+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "work_item_kind": "mechanical_defect",
@@ -125,7 +125,7 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-09-30T17:15:00+00:00",
-      "last_seen": "2026-09-30T17:15:00+00:00",
+      "last_seen": "2026-09-30T17:27:15+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "work_item_kind": "mechanical_defect",
@@ -149,13 +149,13 @@
         "severity": "medium",
         "count": 1,
         "lines": [
-          18
+          19
         ]
       },
       "status": "open",
       "note": null,
       "first_seen": "2026-09-30T17:15:01+00:00",
-      "last_seen": "2026-09-30T17:15:01+00:00",
+      "last_seen": "2026-09-30T17:27:15+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "work_item_kind": "mechanical_defect",
@@ -179,7 +179,7 @@
         "dimension": "abstraction_fitness"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -196,7 +196,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::ai_generated_debt": {
@@ -211,7 +213,7 @@
         "dimension": "ai_generated_debt"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -228,7 +230,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::api_surface_coherence": {
@@ -243,7 +247,7 @@
         "dimension": "api_surface_coherence"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -260,7 +264,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::authorization_consistency": {
@@ -275,7 +281,7 @@
         "dimension": "authorization_consistency"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -292,7 +298,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::contract_coherence": {
@@ -307,7 +315,7 @@
         "dimension": "contract_coherence"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -324,7 +332,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::convention_outlier": {
@@ -339,7 +349,7 @@
         "dimension": "convention_outlier"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -356,7 +366,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::cross_module_architecture": {
@@ -371,7 +383,7 @@
         "dimension": "cross_module_architecture"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -388,7 +400,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::dependency_health": {
@@ -403,7 +417,7 @@
         "dimension": "dependency_health"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -420,7 +434,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::design_coherence": {
@@ -435,7 +451,7 @@
         "dimension": "design_coherence"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -452,7 +468,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::error_consistency": {
@@ -467,7 +485,7 @@
         "dimension": "error_consistency"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -484,7 +502,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::high_level_elegance": {
@@ -499,7 +519,7 @@
         "dimension": "high_level_elegance"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -516,7 +536,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::incomplete_migration": {
@@ -531,7 +553,7 @@
         "dimension": "incomplete_migration"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -548,7 +570,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::initialization_coupling": {
@@ -563,7 +587,7 @@
         "dimension": "initialization_coupling"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -580,7 +604,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::logic_clarity": {
@@ -595,7 +621,7 @@
         "dimension": "logic_clarity"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -612,7 +638,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::low_level_elegance": {
@@ -627,7 +655,7 @@
         "dimension": "low_level_elegance"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -644,7 +672,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::mid_level_elegance": {
@@ -659,7 +689,7 @@
         "dimension": "mid_level_elegance"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -676,7 +706,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::naming_quality": {
@@ -691,7 +723,7 @@
         "dimension": "naming_quality"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -708,7 +740,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::package_organization": {
@@ -723,7 +757,7 @@
         "dimension": "package_organization"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -740,7 +774,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::test_strategy": {
@@ -755,7 +791,7 @@
         "dimension": "test_strategy"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -772,7 +808,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "subjective_review::.::type_safety": {
@@ -787,7 +825,7 @@
         "dimension": "type_safety"
       },
       "status": "fixed",
-      "note": "completed by review import",
+      "note": "Still absent from scan after manual resolution",
       "first_seen": "2026-09-30T17:15:01+00:00",
       "last_seen": "2026-09-30T17:15:01+00:00",
       "resolved_at": "2026-09-30T17:22:13+00:00",
@@ -804,7 +842,9 @@
         "kind": "agent_import",
         "text": "Dimension assessment imported; coverage marker superseded",
         "attested_at": "2026-09-30T17:22:13+00:00",
-        "scan_verified": false
+        "scan_verified": true,
+        "scan_verified_at": "2026-09-30T17:27:15+00:00",
+        "scan_verification_text": "Absent from detector output in latest scan"
       }
     },
     "review::.::holistic::cross_module_architecture::lexicon-data-in-loop-module": {
@@ -828,11 +868,11 @@
         "reasoning": "",
         "summary_hash": "9805e7c7"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:52+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -840,7 +880,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:52+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::cross_module_architecture::unused-counter-import-loop": {
       "id": "review::.::holistic::cross_module_architecture::unused-counter-import-loop",
@@ -862,11 +908,11 @@
         "reasoning": "",
         "summary_hash": "19b065eb"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:49+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -874,7 +920,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:49+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::high_level_elegance::score_lexical_scoring_in_loop_module": {
       "id": "review::.::holistic::high_level_elegance::score_lexical_scoring_in_loop_module",
@@ -898,11 +950,11 @@
         "reasoning": "",
         "summary_hash": "1bd64730"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:53+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -910,7 +962,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:53+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::convention_outlier::router_untyped_dict_param": {
       "id": "review::.::holistic::convention_outlier::router_untyped_dict_param",
@@ -932,11 +990,11 @@
         "reasoning": "",
         "summary_hash": "4255acd0"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:54+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -944,7 +1002,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:54+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::error_consistency::cli-keyerror-message": {
       "id": "review::.::holistic::error_consistency::cli-keyerror-message",
@@ -966,11 +1030,11 @@
         "reasoning": "",
         "summary_hash": "2df78130"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:51+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -978,7 +1042,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:51+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::error_consistency::cli-read-no-encoding": {
       "id": "review::.::holistic::error_consistency::cli-read-no-encoding",
@@ -1000,11 +1070,11 @@
         "reasoning": "",
         "summary_hash": "28030513"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:52+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1012,7 +1082,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:52+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::naming_quality::state_param_generic_name": {
       "id": "review::.::holistic::naming_quality::state_param_generic_name",
@@ -1036,11 +1112,11 @@
         "reasoning": "",
         "summary_hash": "9246ddf0"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:54+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1048,7 +1124,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:54+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::abstraction_fitness::confidence_thin_wrapper": {
       "id": "review::.::holistic::abstraction_fitness::confidence_thin_wrapper",
@@ -1072,19 +1154,47 @@
         "reasoning": "",
         "summary_hash": "df62e89b"
       },
-      "status": "open",
-      "note": null,
+      "status": "wontfix",
+      "note": "Accepted design choice: single dispatch on question type is the intended API; confidence() is a named domain operation over distributions",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
-      "reopen_count": 0,
+      "resolved_at": "2026-09-30T17:27:05+00:00",
+      "reopen_count": 1,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
       "origin": "review_import",
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually reviewed this finding and it is a deliberate design choice, and I am not gaming the score by skipping without consideration.",
+        "attested_at": "2026-09-30T17:27:05+00:00",
+        "scan_verified": false
+      },
+      "wontfix_scan_count": 2,
+      "wontfix_snapshot": {
+        "captured_at": "2026-09-30T17:27:05+00:00",
+        "scan_count": 2,
+        "tier": 3,
+        "confidence": "low",
+        "detail": {
+          "holistic": true,
+          "dimension": "abstraction_fitness",
+          "related_files": [
+            "lev/engine.py",
+            "lev/loop.py"
+          ],
+          "evidence": [
+            "lev/engine.py: confidence() body is exactly `return max(dist.values())` with no validation, scaling, or other logic",
+            "The name adds domain vocabulary over max(), but at 3 trivial call sites (all in loop.py) the indirection does not pay for itself"
+          ],
+          "suggestion": "Either inline max(dist.values()) at the loop.py call sites, or keep confidence() only if the project intends to evolve it (e.g. margin-based confidence); if kept, add a brief docstring stating it is the deliberate confidence contract so future readers do not treat it as dead indirection.",
+          "reasoning": "",
+          "summary_hash": "df62e89b"
+        }
+      }
     },
     "review::.::holistic::dependency_health::unused_counter_import_loop": {
       "id": "review::.::holistic::dependency_health::unused_counter_import_loop",
@@ -1106,11 +1216,11 @@
         "reasoning": "",
         "summary_hash": "45850dfa"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:49+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1118,7 +1228,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:49+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::low_level_elegance::busy_loop_iteration_counting": {
       "id": "review::.::holistic::low_level_elegance::busy_loop_iteration_counting",
@@ -1140,11 +1256,11 @@
         "reasoning": "",
         "summary_hash": "39d434bf"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:51+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1152,7 +1268,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:51+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::low_level_elegance::unexplained_magic_multiplier": {
       "id": "review::.::holistic::low_level_elegance::unexplained_magic_multiplier",
@@ -1174,11 +1296,11 @@
         "reasoning": "",
         "summary_hash": "f7e94ada"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:53+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1186,7 +1308,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:53+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::low_level_elegance::unused_counter_import_loop": {
       "id": "review::.::holistic::low_level_elegance::unused_counter_import_loop",
@@ -1208,11 +1336,11 @@
         "reasoning": "",
         "summary_hash": "0816f404"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:49+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1220,7 +1348,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:49+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::mid_level_elegance::cli_result_serialization_via_dict": {
       "id": "review::.::holistic::mid_level_elegance::cli_result_serialization_via_dict",
@@ -1242,11 +1376,11 @@
         "reasoning": "",
         "summary_hash": "7bd218f4"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:52+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1254,7 +1388,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:52+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::mid_level_elegance::loop_unused_counter_import": {
       "id": "review::.::holistic::mid_level_elegance::loop_unused_counter_import",
@@ -1276,11 +1416,11 @@
         "reasoning": "",
         "summary_hash": "17188ce7"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:49+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1288,7 +1428,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:49+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::test_strategy::weak_iteration_loop_assertion": {
       "id": "review::.::holistic::test_strategy::weak_iteration_loop_assertion",
@@ -1310,11 +1456,11 @@
         "reasoning": "",
         "summary_hash": "bc51e32f"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:55+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1322,7 +1468,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:55+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::api_surface_coherence::classify_missing_error_contract": {
       "id": "review::.::holistic::api_surface_coherence::classify_missing_error_contract",
@@ -1346,11 +1498,11 @@
         "reasoning": "",
         "summary_hash": "c6e7552d"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:50+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1358,7 +1510,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:50+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::api_surface_coherence::classify_overloaded_union_dispatch": {
       "id": "review::.::holistic::api_surface_coherence::classify_overloaded_union_dispatch",
@@ -1381,19 +1539,46 @@
         "reasoning": "",
         "summary_hash": "a0c07916"
       },
-      "status": "open",
-      "note": null,
+      "status": "wontfix",
+      "note": "Accepted design choice: single dispatch on question type is the intended API; confidence() is a named domain operation over distributions",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
-      "reopen_count": 0,
+      "resolved_at": "2026-09-30T17:27:05+00:00",
+      "reopen_count": 1,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
       "origin": "review_import",
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually reviewed this finding and it is a deliberate design choice, and I am not gaming the score by skipping without consideration.",
+        "attested_at": "2026-09-30T17:27:05+00:00",
+        "scan_verified": false
+      },
+      "wontfix_scan_count": 2,
+      "wontfix_snapshot": {
+        "captured_at": "2026-09-30T17:27:05+00:00",
+        "scan_count": 2,
+        "tier": 3,
+        "confidence": "low",
+        "detail": {
+          "holistic": true,
+          "dimension": "api_surface_coherence",
+          "related_files": [
+            "lev/loop.py"
+          ],
+          "evidence": [
+            "lev/loop.py:33-35 silently dispatches ChoiceQuestion to _classify_choice and everything else (including a wrong type) to _classify_score via isinstance",
+            "lev/loop.py:28 declares -> ChoiceResult | ScoreResult with no doc tying the result type to the question type"
+          ],
+          "suggestion": "Either add a docstring mapping question type to result type, or reject non-ScoreQuestion input with ValueError in the fallback branch so the overload's contract is explicit instead of implicit.",
+          "reasoning": "",
+          "summary_hash": "a0c07916"
+        }
+      }
     },
     "review::.::holistic::api_surface_coherence::duplicated_anchor_defaults": {
       "id": "review::.::holistic::api_surface_coherence::duplicated_anchor_defaults",
@@ -1417,11 +1602,11 @@
         "reasoning": "",
         "summary_hash": "b3eef179"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:50+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1429,7 +1614,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:50+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::package_organization::loop_py_facade_like_reexports": {
       "id": "review::.::holistic::package_organization::loop_py_facade_like_reexports",
@@ -1452,11 +1643,11 @@
         "reasoning": "",
         "summary_hash": "de6c7ff4"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:53+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1464,7 +1655,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:53+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::design_coherence::no-op-deliberation-loop-score": {
       "id": "review::.::holistic::design_coherence::no-op-deliberation-loop-score",
@@ -1486,11 +1683,11 @@
         "reasoning": "",
         "summary_hash": "3fe9fccc"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:51+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1498,7 +1695,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:51+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::design_coherence::unused-counter-import-loop": {
       "id": "review::.::holistic::design_coherence::unused-counter-import-loop",
@@ -1520,11 +1723,11 @@
         "reasoning": "",
         "summary_hash": "b0298f8a"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:49+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1532,7 +1735,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:49+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::contract_coherence::raw_choice_scores_param_name_mismatch": {
       "id": "review::.::holistic::contract_coherence::raw_choice_scores_param_name_mismatch",
@@ -1556,11 +1765,11 @@
         "reasoning": "",
         "summary_hash": "e1cb2ee6"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:53+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1568,7 +1777,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:53+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::type_safety::bare_counter_annotations": {
       "id": "review::.::holistic::type_safety::bare_counter_annotations",
@@ -1591,11 +1806,11 @@
         "reasoning": "",
         "summary_hash": "18a0686f"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:50+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1603,7 +1818,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:50+00:00",
+        "scan_verified": false
+      }
     },
     "review::.::holistic::type_safety::untyped_dict_router_param": {
       "id": "review::.::holistic::type_safety::untyped_dict_router_param",
@@ -1626,11 +1847,11 @@
         "reasoning": "",
         "summary_hash": "b77b5df1"
       },
-      "status": "open",
-      "note": null,
+      "status": "fixed",
+      "note": "Fixed in desloppify pass: refactor commit ed8ccc6, stem override 473e217, test update",
       "first_seen": "2026-09-30T17:22:13+00:00",
       "last_seen": "2026-09-30T17:22:13+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-09-30T17:26:54+00:00",
       "reopen_count": 0,
       "work_item_kind": "review_defect",
       "issue_kind": "review_defect",
@@ -1638,7 +1859,13 @@
       "lang": "python",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have actually applied the fix in code and verified with the full test suite, and I am not gaming the score by resolving without fixing.",
+        "attested_at": "2026-09-30T17:26:54+00:00",
+        "scan_verified": false
+      }
     }
   },
   "scan_coverage": {
@@ -1658,7 +1885,7 @@
         }
       },
       "warnings": [],
-      "updated_at": "2026-09-30T17:15:13+00:00"
+      "updated_at": "2026-09-30T17:27:15+00:00"
     }
   },
   "score_confidence": {
@@ -1672,7 +1899,7 @@
   },
   "subjective_integrity": {
     "status": "disabled",
-    "target_score": null,
+    "target_score": 85.0,
     "matched_count": 0,
     "matched_dimensions": [],
     "reset_dimensions": []
@@ -1697,7 +1924,10 @@
         "Delegation Density": 100.0,
         "Definition Directness": 92.0,
         "Type Discipline": 96.0
-      }
+      },
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_wontfix",
+      "stale_since": "2026-09-30T17:27:05+00:00"
     },
     "ai_generated_debt": {
       "score": 96.0,
@@ -1707,7 +1937,10 @@
     "api_surface_coherence": {
       "score": 88.0,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_wontfix",
+      "stale_since": "2026-09-30T17:27:05+00:00"
     },
     "authorization_consistency": {
       "score": 100,
@@ -1717,37 +1950,58 @@
     "contract_coherence": {
       "score": 95.0,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_fixed",
+      "stale_since": "2026-09-30T17:26:53+00:00"
     },
     "convention_outlier": {
       "score": 93.0,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_fixed",
+      "stale_since": "2026-09-30T17:26:54+00:00"
     },
     "cross_module_architecture": {
       "score": 92.0,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_fixed",
+      "stale_since": "2026-09-30T17:26:52+00:00"
     },
     "dependency_health": {
       "score": 92.0,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_fixed",
+      "stale_since": "2026-09-30T17:26:49+00:00"
     },
     "design_coherence": {
       "score": 88.0,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_fixed",
+      "stale_since": "2026-09-30T17:26:51+00:00"
     },
     "error_consistency": {
       "score": 88.0,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_fixed",
+      "stale_since": "2026-09-30T17:26:52+00:00"
     },
     "high_level_elegance": {
       "score": 88.5,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_fixed",
+      "stale_since": "2026-09-30T17:26:53+00:00"
     },
     "incomplete_migration": {
       "score": 100,
@@ -1767,32 +2021,50 @@
     "low_level_elegance": {
       "score": 90.0,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_fixed",
+      "stale_since": "2026-09-30T17:26:53+00:00"
     },
     "mid_level_elegance": {
       "score": 90.0,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_fixed",
+      "stale_since": "2026-09-30T17:26:52+00:00"
     },
     "naming_quality": {
       "score": 90.0,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_fixed",
+      "stale_since": "2026-09-30T17:26:54+00:00"
     },
     "package_organization": {
       "score": 92.0,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_fixed",
+      "stale_since": "2026-09-30T17:26:53+00:00"
     },
     "test_strategy": {
       "score": 90.0,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_fixed",
+      "stale_since": "2026-09-30T17:26:55+00:00"
     },
     "type_safety": {
       "score": 90.0,
       "source": "holistic",
-      "assessed_at": "2026-09-30T17:22:13+00:00"
+      "assessed_at": "2026-09-30T17:22:13+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_fixed",
+      "stale_since": "2026-09-30T17:26:54+00:00"
     }
   },
   "scan_history": [
@@ -2053,77 +2325,143 @@
           "strict": 90.0
         }
       }
+    },
+    {
+      "timestamp": "2026-09-30T17:27:15+00:00",
+      "lang": "python",
+      "strict_score": 92.8,
+      "verified_strict_score": 99.4,
+      "objective_score": 99.4,
+      "overall_score": 93.0,
+      "open": 3,
+      "diff_new": 0,
+      "diff_resolved": 21,
+      "ignored": 0,
+      "raw_issues": 3,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "disabled",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 85.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 98.4,
+          "strict": 96.1
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Abstraction fit": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "AI generated debt": {
+          "score": 96.0,
+          "strict": 96.0
+        },
+        "API coherence": {
+          "score": 88.0,
+          "strict": 88.0
+        },
+        "Auth consistency": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Contracts": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Convention drift": {
+          "score": 93.0,
+          "strict": 93.0
+        },
+        "Cross-module arch": {
+          "score": 92.0,
+          "strict": 92.0
+        },
+        "Dep health": {
+          "score": 92.0,
+          "strict": 92.0
+        },
+        "Design coherence": {
+          "score": 88.0,
+          "strict": 88.0
+        },
+        "Error consistency": {
+          "score": 88.0,
+          "strict": 88.0
+        },
+        "High elegance": {
+          "score": 88.5,
+          "strict": 88.5
+        },
+        "Stale migration": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Init coupling": {
+          "score": 93.0,
+          "strict": 93.0
+        },
+        "Logic clarity": {
+          "score": 94.0,
+          "strict": 94.0
+        },
+        "Low elegance": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Mid elegance": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Naming quality": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Structure nav": {
+          "score": 92.0,
+          "strict": 92.0
+        },
+        "Test strategy": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Type safety": {
+          "score": 90.0,
+          "strict": 90.0
+        }
+      }
     }
   ],
   "review_cache": {
     "detectors": {
       "boilerplate": {
         "version": 1,
-        "fingerprint": "dfe500a471b817bbab1bb239064c59aab8f4ff00",
+        "fingerprint": "06c1029511b1e51636b5d4f2a06e635efc43319c",
         "entries": [
-          {
-            "id": "059e56c417ec38d6",
-            "distinct_files": 2,
-            "window_size": 11,
-            "locations": [
-              {
-                "file": "docs/superpowers/plans/2026-09-30-lev.md:python",
-                "line": 415
-              },
-              {
-                "file": "lev/loop.py",
-                "line": 33
-              }
-            ],
-            "sample": [
-              "    if isinstance(question, ChoiceQuestion):",
-              "        return _classify_choice(state, question, threshold, max_iters)",
-              "    return _classify_score(state, question, threshold, max_iters)",
-              ""
-            ]
-          },
-          {
-            "id": "060102ab90a11614",
-            "distinct_files": 2,
-            "window_size": 19,
-            "locations": [
-              {
-                "file": "docs/superpowers/plans/2026-09-30-lev.md:python",
-                "line": 548
-              },
-              {
-                "file": "lev/router.py",
-                "line": 1
-              }
-            ],
-            "sample": [
-              "from lev.types import ChoiceQuestion, ScoreQuestion",
-              "",
-              "",
-              "def question_from_dict(data: dict) -> ChoiceQuestion | ScoreQuestion:"
-            ]
-          },
-          {
-            "id": "08f27e5b2b3e9b44",
-            "distinct_files": 2,
-            "window_size": 28,
-            "locations": [
-              {
-                "file": "docs/superpowers/plans/2026-09-30-lev.md:python",
-                "line": 220
-              },
-              {
-                "file": "lev/types.py",
-                "line": 4
-              }
-            ],
-            "sample": [
-              "@dataclass(frozen=True)",
-              "class ChoiceQuestion:",
-              "    question: str",
-              "    labels: dict[str, str]"
-            ]
-          },
           {
             "id": "1fd30655db829ffb",
             "distinct_files": 2,
@@ -2148,7 +2486,7 @@
           {
             "id": "215898eacb2cd966",
             "distinct_files": 2,
-            "window_size": 53,
+            "window_size": 27,
             "locations": [
               {
                 "file": "docs/superpowers/plans/2026-09-30-lev.md:python",
@@ -2167,24 +2505,45 @@
             ]
           },
           {
-            "id": "28d1461b6ed1a0bf",
+            "id": "382e7989f3d1824d",
             "distinct_files": 2,
-            "window_size": 16,
+            "window_size": 12,
             "locations": [
               {
                 "file": "docs/superpowers/plans/2026-09-30-lev.md:python",
-                "line": 280
+                "line": 552
               },
               {
-                "file": "lev/engine.py",
-                "line": 62
+                "file": "lev/router.py",
+                "line": 15
               }
             ],
             "sample": [
-              "            sum(min(count, state[tok]) for tok, count in evidence.items())",
-              "        )",
-              "    return scores",
-              ""
+              "    qtype = data.get(\"type\")",
+              "    if qtype == \"choice\":",
+              "        labels = data.get(\"labels\")",
+              "        if not isinstance(labels, dict) or not labels:"
+            ]
+          },
+          {
+            "id": "3a8d7dd72dddb60d",
+            "distinct_files": 2,
+            "window_size": 21,
+            "locations": [
+              {
+                "file": "docs/superpowers/plans/2026-09-30-lev.md:python",
+                "line": 655
+              },
+              {
+                "file": "lev/cli.py",
+                "line": 5
+              }
+            ],
+            "sample": [
+              "from pathlib import Path",
+              "",
+              "from lev.loop import classify",
+              "from lev.router import question_from_dict"
             ]
           },
           {
@@ -2232,7 +2591,7 @@
           {
             "id": "55bb07e667f62f7e",
             "distinct_files": 2,
-            "window_size": 19,
+            "window_size": 15,
             "locations": [
               {
                 "file": "docs/superpowers/plans/2026-09-30-lev.md:python",
@@ -2240,7 +2599,7 @@
               },
               {
                 "file": "lev/engine.py",
-                "line": 43
+                "line": 55
               }
             ],
             "sample": [
@@ -2253,7 +2612,7 @@
           {
             "id": "79592fe5863b10ec",
             "distinct_files": 2,
-            "window_size": 27,
+            "window_size": 20,
             "locations": [
               {
                 "file": "docs/superpowers/plans/2026-09-30-lev.md:python",
@@ -2261,7 +2620,7 @@
               },
               {
                 "file": "lev/loop.py",
-                "line": 46
+                "line": 38
               }
             ],
             "sample": [
@@ -2272,45 +2631,66 @@
             ]
           },
           {
-            "id": "a1ffbc49eac4188c",
+            "id": "88902735af0f1673",
             "distinct_files": 2,
-            "window_size": 12,
+            "window_size": 5,
             "locations": [
               {
                 "file": "docs/superpowers/plans/2026-09-30-lev.md:python",
-                "line": 679
+                "line": 275
               },
               {
-                "file": "lev/cli.py",
-                "line": 35
+                "file": "lev/engine.py",
+                "line": 69
               }
             ],
             "sample": [
-              "        ]",
-              "    except (ValueError, KeyError, OSError) as exc:",
-              "        print(f\"lev: error: {exc}\", file=sys.stderr)",
-              "        return 1"
+              "def raw_choice_scores(state: Counter, labels: dict[str, str]) -> dict[str, float]:",
+              "    scores: dict[str, float] = {}",
+              "    for label, criteria in labels.items():",
+              "        evidence = tokenize(f\"{label} {criteria}\")"
             ]
           },
           {
-            "id": "accd34b2ca7acb03",
+            "id": "89bc14614f4345e2",
             "distinct_files": 2,
-            "window_size": 24,
+            "window_size": 25,
             "locations": [
               {
                 "file": "docs/superpowers/plans/2026-09-30-lev.md:python",
-                "line": 652
+                "line": 351
               },
               {
-                "file": "lev/cli.py",
-                "line": 1
+                "file": "tests/test_loop.py",
+                "line": 38
               }
             ],
             "sample": [
-              "import argparse",
-              "import json",
-              "import sys",
-              "from pathlib import Path"
+              "    assert sum(result.distribution.values()) == pytest.approx(1.0)",
+              "",
+              "",
+              "def test_iteration_budget_is_respected():"
+            ]
+          },
+          {
+            "id": "b241b00f795faccd",
+            "distinct_files": 2,
+            "window_size": 11,
+            "locations": [
+              {
+                "file": "docs/superpowers/plans/2026-09-30-lev.md:python",
+                "line": 285
+              },
+              {
+                "file": "lev/engine.py",
+                "line": 89
+              }
+            ],
+            "sample": [
+              "def blend(",
+              "    prior: dict[str, float] | None,",
+              "    raw: dict[str, float],",
+              "    alpha: float = 0.5,"
             ]
           },
           {
@@ -2332,6 +2712,27 @@
               "",
               "import pytest",
               ""
+            ]
+          },
+          {
+            "id": "bf3bd51515d9ed1d",
+            "distinct_files": 2,
+            "window_size": 15,
+            "locations": [
+              {
+                "file": "docs/superpowers/plans/2026-09-30-lev.md:python",
+                "line": 233
+              },
+              {
+                "file": "lev/types.py",
+                "line": 20
+              }
+            ],
+            "sample": [
+              "@dataclass(frozen=True)",
+              "class ChoiceResult:",
+              "    label: str",
+              "    distribution: dict[str, float]"
             ]
           },
           {
@@ -2380,7 +2781,7 @@
       },
       "security": {
         "version": 1,
-        "fingerprint": "cf393db31241167646b3023aa7ff22d975d19e92",
+        "fingerprint": "b622ccf0c08c4cc767787d6d1ae9aa89423a9765",
         "entries": [],
         "files_scanned": 0,
         "coverage": null
@@ -2389,45 +2790,49 @@
         "version": 1,
         "threshold": 0.9,
         "functions": {
-          "lev/cli.py:main:10:42": {
-            "body_hash": "87f381130ee9a9b936321486ec905a95",
+          "lev/cli.py:main:11:43": {
+            "body_hash": "93bc82a3c5c857ba7aa31410de6eb66e",
             "loc": 33
           },
-          "lev/engine.py:_stem:18:37": {
+          "lev/engine.py:_stem:19:38": {
             "body_hash": "4d11e08d9664748c0640e42bcd8d7125",
             "loc": 20
           },
-          "lev/engine.py:tokenize:40:43": {
-            "body_hash": "08867a3300efbff91f7dd6c89ed28abb",
+          "lev/engine.py:tokenize:41:44": {
+            "body_hash": "eacf4c66e9304bd4281fcafbc781a7d5",
             "loc": 4
           },
-          "lev/engine.py:softmax:46:50": {
+          "lev/engine.py:softmax:58:62": {
             "body_hash": "9bfbec4f4970a887612b507cc72ef0bb",
             "loc": 5
           },
-          "lev/engine.py:raw_choice_scores:57:64": {
-            "body_hash": "cd90ceb78bec06ad7cf7b3a1ff9f32df",
-            "loc": 8
+          "lev/engine.py:raw_choice_scores:69:74": {
+            "body_hash": "d864079ea8afd6c43beee22236e4d7df",
+            "loc": 6
           },
-          "lev/engine.py:blend:67:77": {
+          "lev/engine.py:urgency_score:77:86": {
+            "body_hash": "170c20b210a213b403f0fb439ac1174b",
+            "loc": 10
+          },
+          "lev/engine.py:blend:89:99": {
             "body_hash": "d68356aba8b634bc62b5a5652b54d981",
             "loc": 11
           },
-          "lev/loop.py:classify:23:35": {
-            "body_hash": "1f02f409d55ff5928d5796e6a4469ddc",
-            "loc": 13
+          "lev/loop.py:classify:10:27": {
+            "body_hash": "54114b62c8c503ffa71f364ceea83a06",
+            "loc": 18
           },
-          "lev/loop.py:_classify_choice:38:62": {
-            "body_hash": "ddaddb17cbc71817f79508757a9f683c",
+          "lev/loop.py:_classify_choice:30:54": {
+            "body_hash": "6afa112fe322fd6b9daf11827bdb28be",
             "loc": 25
           },
-          "lev/loop.py:_classify_score:65:91": {
-            "body_hash": "07f840fd8a8fce0ef62501a53cc613ce",
-            "loc": 27
+          "lev/loop.py:_classify_score:57:73": {
+            "body_hash": "82bd81a1c8972f8811b24dccdd47a17c",
+            "loc": 17
           },
-          "lev/router.py:question_from_dict:4:19": {
-            "body_hash": "d87a8308f40a0626e62ce380264a15d8",
-            "loc": 16
+          "lev/router.py:question_from_dict:9:29": {
+            "body_hash": "88ffc5cc17bdfbbd3d1c578c76bafe8d",
+            "loc": 21
           }
         },
         "near_pairs": []
@@ -2453,7 +2858,7 @@
     "test": 7
   },
   "tool_hash": "2ead5ae7d4e6",
-  "scan_path": null,
+  "scan_path": ".",
   "scan_completeness": {
     "python": "full"
   },
@@ -2470,7 +2875,7 @@
       "facade": 6,
       "coupling": 0,
       "uncalled_functions": 0,
-      "test_coverage": 29,
+      "test_coverage": 31,
       "smells": 6,
       "global_mutable_config": 6,
       "security": 6,
@@ -2479,32 +2884,31 @@
       "unused_enums": 6,
       "subjective_review": 20,
       "boilerplate_duplication": 0,
-      "dupes": 10,
-      "stale_wontfix": 0,
-      "review": 10
+      "dupes": 11,
+      "stale_wontfix": 0
     }
   },
   "codebase_metrics": {
     "python": {
       "total_files": 13,
-      "total_loc": 581,
+      "total_loc": 608,
       "total_directories": 2
     }
   },
   "dimension_scores": {
     "Code quality": {
-      "score": 96.1,
+      "score": 98.4,
       "strict": 96.1,
-      "verified_strict_score": 96.1,
+      "verified_strict_score": 98.4,
       "checks": 44,
-      "failing": 2,
+      "failing": 1,
       "tier": 3,
       "detectors": {
         "unused": {
           "potential": 6,
-          "pass_rate": 0.8333333333333334,
-          "failing": 1,
-          "weighted_failures": 1.0
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
         },
         "smells": {
           "potential": 6,
@@ -2592,12 +2996,12 @@
       "score": 100.0,
       "strict": 100.0,
       "verified_strict_score": 100.0,
-      "checks": 10,
+      "checks": 11,
       "failing": 0,
       "tier": 3,
       "detectors": {
         "dupes": {
-          "potential": 10,
+          "potential": 11,
           "pass_rate": 1.0,
           "failing": 0,
           "weighted_failures": 0.0
@@ -2608,12 +3012,12 @@
       "score": 100.0,
       "strict": 100.0,
       "verified_strict_score": 100.0,
-      "checks": 29,
+      "checks": 31,
       "failing": 0,
       "tier": 4,
       "detectors": {
         "test_coverage": {
-          "potential": 29,
+          "potential": 31,
           "pass_rate": 1.0,
           "failing": 0,
           "weighted_failures": 0.0
@@ -2625,13 +3029,13 @@
       "strict": 95.0,
       "verified_strict_score": 95.0,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.95,
-          "failing": 1,
+          "failing": 0,
           "weighted_failures": 0.5,
           "assessment_score": 95.0,
           "placeholder": false,
@@ -2682,13 +3086,13 @@
       "strict": 88.0,
       "verified_strict_score": 88.0,
       "checks": 10,
-      "failing": 3,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.88,
-          "failing": 3,
+          "failing": 0,
           "weighted_failures": 1.2,
           "assessment_score": 88.0,
           "placeholder": false,
@@ -2724,13 +3128,13 @@
       "strict": 95.0,
       "verified_strict_score": 95.0,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.95,
-          "failing": 1,
+          "failing": 0,
           "weighted_failures": 0.5,
           "assessment_score": 95.0,
           "placeholder": false,
@@ -2745,13 +3149,13 @@
       "strict": 93.0,
       "verified_strict_score": 93.0,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.93,
-          "failing": 1,
+          "failing": 0,
           "weighted_failures": 0.7,
           "assessment_score": 93.0,
           "placeholder": false,
@@ -2766,13 +3170,13 @@
       "strict": 92.0,
       "verified_strict_score": 92.0,
       "checks": 10,
-      "failing": 2,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.92,
-          "failing": 2,
+          "failing": 0,
           "weighted_failures": 0.8,
           "assessment_score": 92.0,
           "placeholder": false,
@@ -2787,13 +3191,13 @@
       "strict": 92.0,
       "verified_strict_score": 92.0,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.92,
-          "failing": 1,
+          "failing": 0,
           "weighted_failures": 0.8,
           "assessment_score": 92.0,
           "placeholder": false,
@@ -2808,13 +3212,13 @@
       "strict": 88.0,
       "verified_strict_score": 88.0,
       "checks": 10,
-      "failing": 2,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.88,
-          "failing": 2,
+          "failing": 0,
           "weighted_failures": 1.2,
           "assessment_score": 88.0,
           "placeholder": false,
@@ -2829,13 +3233,13 @@
       "strict": 88.0,
       "verified_strict_score": 88.0,
       "checks": 10,
-      "failing": 2,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.88,
-          "failing": 2,
+          "failing": 0,
           "weighted_failures": 1.2,
           "assessment_score": 88.0,
           "placeholder": false,
@@ -2850,13 +3254,13 @@
       "strict": 88.5,
       "verified_strict_score": 88.5,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.885,
-          "failing": 1,
+          "failing": 0,
           "weighted_failures": 1.15,
           "assessment_score": 88.5,
           "placeholder": false,
@@ -2934,13 +3338,13 @@
       "strict": 90.0,
       "verified_strict_score": 90.0,
       "checks": 10,
-      "failing": 3,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.9,
-          "failing": 3,
+          "failing": 0,
           "weighted_failures": 1.0,
           "assessment_score": 90.0,
           "placeholder": false,
@@ -2955,13 +3359,13 @@
       "strict": 90.0,
       "verified_strict_score": 90.0,
       "checks": 10,
-      "failing": 2,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.9,
-          "failing": 2,
+          "failing": 0,
           "weighted_failures": 1.0,
           "assessment_score": 90.0,
           "placeholder": false,
@@ -2976,13 +3380,13 @@
       "strict": 90.0,
       "verified_strict_score": 90.0,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.9,
-          "failing": 1,
+          "failing": 0,
           "weighted_failures": 1.0,
           "assessment_score": 90.0,
           "placeholder": false,
@@ -2997,13 +3401,13 @@
       "strict": 92.0,
       "verified_strict_score": 92.0,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.92,
-          "failing": 1,
+          "failing": 0,
           "weighted_failures": 0.8,
           "assessment_score": 92.0,
           "placeholder": false,
@@ -3018,13 +3422,13 @@
       "strict": 90.0,
       "verified_strict_score": 90.0,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.9,
-          "failing": 1,
+          "failing": 0,
           "weighted_failures": 1.0,
           "assessment_score": 90.0,
           "placeholder": false,
@@ -3039,13 +3443,13 @@
       "strict": 90.0,
       "verified_strict_score": 90.0,
       "checks": 10,
-      "failing": 2,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.9,
-          "failing": 2,
+          "failing": 0,
           "weighted_failures": 1.0,
           "assessment_score": 90.0,
           "placeholder": false,
@@ -3057,8 +3461,12 @@
     }
   },
   "reminder_history": {
-    "zone_classification": 1,
-    "report_scores": 1
+    "zone_classification": 2,
+    "report_scores": 2,
+    "stagnant_nudge": 5,
+    "badge_recommendation": 1,
+    "feedback_nudge": 1,
+    "review_not_run": 1
   },
   "assessment_import_audit": [
     {
