@@ -12,6 +12,7 @@ _OVERRIDES = {
     "analyses": "analysis",
     "status": "status",
     "statuses": "status",
+    "invoices": "invoice",
 }
 
 
