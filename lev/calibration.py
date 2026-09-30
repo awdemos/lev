@@ -19,8 +19,11 @@ class Calibration:
         return ez / (1 + ez)
 
     def save(self, path: str | Path) -> None:
-        Path(path).write_text(json.dumps({"a": self.a, "b": self.b}),
-                              encoding="utf-8")
+        target = Path(path)
+        tmp = target.with_name(target.name + ".tmp")
+        tmp.write_text(json.dumps({"a": self.a, "b": self.b}),
+                       encoding="utf-8")
+        tmp.replace(target)
 
     @classmethod
     def load(cls, path: str | Path) -> "Calibration":
