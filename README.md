@@ -61,3 +61,8 @@ token overlap between the state and each label's criteria; each loop pass
 blends the prior pass's log-probabilities back into the raw scores before a
 softmax, so the loop genuinely refines the distribution and the iteration
 count reflects input ambiguity.
+
+Score questions measure **urgency/intensity**, not sentiment: an urgent,
+angry, or broken-outage message scores high; a calm, low-stakes message
+scores low. The confidence reported is the true lexical agreement — LEV
+never inflates it to make the loop look productive.
