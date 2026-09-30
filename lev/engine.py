@@ -15,26 +15,31 @@ _OVERRIDES = {
 }
 
 
+# (suffix, min token length, cut, reject if stem ends with)
+_RULES = (
+    ("ies", 4, 3, "y", None),
+    ("es", 4, 2, "", "s"),
+    ("ing", 5, 3, "", None),
+    ("s", 3, 1, "", None),
+    ("ed", 4, 2, "", None),
+)
+
+_EXEMPT_ENDINGS = ("ss", "us", "is")
+_MIN_STEM_LEN = 3
+
+
 def _stem(tok: str) -> str:
     if tok in _OVERRIDES:
         return _OVERRIDES[tok]
-    if tok.endswith(("ss", "us", "is")):
+    if tok.endswith(_EXEMPT_ENDINGS):
         return tok
-    if len(tok) > 4 and tok.endswith("ies"):
-        stem = tok[:-3] + "y"
-    elif len(tok) > 4 and tok.endswith("es"):
-        stem = tok[:-2]
-        if stem.endswith("s"):
-            return tok
-    elif len(tok) > 5 and tok.endswith("ing"):
-        stem = tok[:-3]
-    elif len(tok) > 3 and tok.endswith("s"):
-        stem = tok[:-1]
-    elif len(tok) > 4 and tok.endswith("ed"):
-        stem = tok[:-2]
-    else:
-        return tok
-    return stem if len(stem) >= 3 else tok
+    for suffix, min_len, cut, add, reject in _RULES:
+        if len(tok) > min_len and tok.endswith(suffix):
+            stem = tok[:-cut] + add
+            if reject and stem.endswith(reject):
+                return tok
+            return stem if len(stem) >= _MIN_STEM_LEN else tok
+    return tok
 
 
 def tokenize(text: str) -> Counter:
