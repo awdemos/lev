@@ -24,6 +24,8 @@ class ChoiceResult:
     confidence: float
     iterations: int
     question: str = ""
+    calibrated: bool = False
+    margin: float = 0.0
 
 
 @dataclass(frozen=True)

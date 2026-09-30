@@ -1,6 +1,6 @@
 [project]
 name = "lev"
-version = "0.1.0"
+version = "0.2.0"
 description = "A Jev-inspired classifier that deliberates in while-loops instead of one-shot ifs."
 requires-python = ">=3.10"
 
