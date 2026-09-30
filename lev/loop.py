@@ -1,9 +1,23 @@
-from lev.engine import blend, confidence, raw_choice_scores, tokenize, urgency_score
+from lev.engine import blend, confidence, tokenize, urgency_score
+from lev.signals import (
+    CharNgramSignal,
+    NegationSignal,
+    SaturationSignal,
+    Signal,
+    TokenOverlapSignal,
+)
 from lev.types import (
     ChoiceQuestion,
     ChoiceResult,
     ScoreQuestion,
     ScoreResult,
+)
+
+DEFAULT_SIGNALS: tuple[Signal, ...] = (
+    TokenOverlapSignal(),
+    CharNgramSignal(),
+    SaturationSignal(),
+    NegationSignal(),
 )
 
 
@@ -12,6 +26,7 @@ def classify(
     question: ChoiceQuestion | ScoreQuestion,
     threshold: float = 0.9,
     max_iters: int = 5,
+    signals: tuple[Signal, ...] = DEFAULT_SIGNALS,
 ) -> ChoiceResult | ScoreResult:
     """Classify text against a typed question via a confidence-gated loop.
 
@@ -23,7 +38,7 @@ def classify(
     if max_iters < 1:
         raise ValueError("max_iters must be >= 1")
     if isinstance(question, ChoiceQuestion):
-        return _classify_choice(text, question, threshold, max_iters)
+        return _classify_choice(text, question, threshold, max_iters, signals)
     return _classify_score(text, question, threshold, max_iters)
 
 
@@ -32,24 +47,34 @@ def _classify_choice(
     question: ChoiceQuestion,
     threshold: float,
     max_iters: int,
+    signals: tuple[Signal, ...] = DEFAULT_SIGNALS,
 ) -> ChoiceResult:
     if not question.labels:
         raise ValueError("labels must be non-empty")
     tokens = tokenize(text)
-    raw = raw_choice_scores(tokens, question.labels)
     prior: dict[str, float] | None = None
+    dist: dict[str, float] = {}
     iterations = 0
-    dist = blend(prior, raw)
-    while confidence(dist) < threshold and iterations < max_iters:
-        prior = dist
+    while True:
+        signal = signals[min(iterations, len(signals) - 1)]
+        raw = signal.score(text, tokens, question)
         dist = blend(prior, raw)
         iterations += 1
+        if confidence(dist) >= threshold or iterations >= max_iters:
+            break
+        if iterations >= len(signals):
+            # Signals exhausted: stop only at a fixed point of the last
+            # signal's raw scores; otherwise keep sharpening (v1 floor).
+            probe = blend(dist, raw)
+            if abs(confidence(probe) - confidence(dist)) < 1e-9:
+                break
+        prior = dist
     label = max(dist, key=dist.get)
     return ChoiceResult(
         label=label,
         distribution=dist,
         confidence=confidence(dist),
-        iterations=max(iterations, 1),
+        iterations=iterations,
         question=question.question,
     )
 
